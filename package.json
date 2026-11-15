@@ -1,0 +1,37 @@
+{
+  "name": "github-stats",
+  "version": "1.0.0",
+  "description": "Zero-downtime, timezone-accurate GitHub streak & stats cards for your profile README",
+  "type": "module",
+  "bin": {
+    "github-stats": "./dist/cli/index.js"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "generate": "tsx src/cli/index.ts",
+    "test": "tsx test/streak-calc.test.ts"
+  },
+  "keywords": [
+    "github",
+    "github-stats",
+    "github-streak",
+    "readme-stats",
+    "profile-readme",
+    "svg-cards"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "lru-cache": "^10.4.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

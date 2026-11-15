@@ -1,0 +1,53 @@
+name: 'GitHub Stats & Streak Card Generator'
+description: 'Generate 100% zero-downtime, timezone-accurate GitHub streak, stats, and language SVG cards for your profile README.'
+author: 'GitHub Stats'
+branding:
+  icon: 'activity'
+  color: 'green'
+
+inputs:
+  username:
+    description: 'GitHub username to generate cards for'
+    required: true
+    default: ${{ github.repository_owner }}
+  timezone:
+    description: 'Timezone for accurate streak calculation (e.g. Asia/Kolkata, America/New_York, UTC)'
+    required: false
+    default: 'UTC'
+  theme:
+    description: 'Theme name (github-dark, tokyonight, dracula, nord, cyberpunk, radical, catppuccin, github-light)'
+    required: false
+    default: 'github-dark'
+  output:
+    description: 'Output directory where SVGs will be saved'
+    required: false
+    default: './stats'
+  hide_border:
+    description: 'Whether to hide borders around cards (true/false)'
+    required: false
+    default: 'false'
+  border_radius:
+    description: 'Border radius for cards (in pixels)'
+    required: false
+    default: '10'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+
+    - name: Generate Cards
+      shell: bash
+      run: |
+        npx tsx "${{ github.action_path }}/src/cli/index.ts" \
+          --username "${{ inputs.username }}" \
+          --timezone "${{ inputs.timezone }}" \
+          --theme "${{ inputs.theme }}" \
+          --output "${{ inputs.output }}" \
+          ${{ inputs.hide_border == 'true' && '--hide-border' || '' }} \
+          --border-radius "${{ inputs.border_radius }}"
+      env:
+        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}

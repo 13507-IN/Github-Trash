@@ -6,8 +6,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "github-stats-cards": "./dist/cli/index.js",
-    "github-stats": "./dist/cli/index.js"
+    "github-stats-cards": "dist/cli/index.js",
+    "github-stats": "dist/cli/index.js"
   },
   "files": [
     "dist"

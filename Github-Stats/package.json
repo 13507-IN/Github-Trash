@@ -1,27 +1,45 @@
 {
-  "name": "github-stats",
+  "name": "github-stats-cards",
   "version": "1.0.0",
-  "description": "Zero-downtime, timezone-accurate GitHub streak & stats cards for your profile README",
+  "description": "Zero-downtime, timezone-accurate GitHub streak & stats SVG cards for profile READMEs",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "bin": {
+    "github-stats-cards": "./dist/cli/index.js",
     "github-stats": "./dist/cli/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
+    "prepublishOnly": "npm run build && npm test",
     "start": "node dist/server.js",
     "generate": "tsx src/cli/index.ts",
     "test": "tsx test/streak-calc.test.ts"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/13507-IN/Github-Trash.git",
+    "directory": "Github-Stats"
+  },
+  "bugs": {
+    "url": "https://github.com/13507-IN/Github-Trash/issues"
+  },
+  "homepage": "https://github.com/13507-IN/Github-Trash/tree/main/Github-Stats#readme",
   "keywords": [
     "github",
     "github-stats",
     "github-streak",
     "readme-stats",
     "profile-readme",
-    "svg-cards"
+    "svg-cards",
+    "streak-stats",
+    "developer-stats"
   ],
-  "author": "",
+  "author": "Rishiraj Debnath <rishirajnatj@gmail.com> (https://github.com/13507-IN)",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.7",

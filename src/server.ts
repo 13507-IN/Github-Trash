@@ -378,8 +378,8 @@ jobs:
   res.send(html);
 });
 
-// Start server
-if (process.env.NODE_ENV !== 'test') {
+// Start server (only when not in test or Vercel serverless environment)
+if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log(`⚡ GitHub Stats Server running at: http://localhost:${PORT}`);
     console.log(`📊 Endpoints: /api/streak, /api/stats, /api/languages`);

@@ -60,7 +60,8 @@ export function formatDate(dateStr: string, includeYear: boolean = true): string
 export function calculateStreak(
   days: DayContribution[],
   timezone: string = 'UTC',
-  referenceDate?: Date
+  referenceDate?: Date,
+  graceDays: number = 0
 ): StreakData {
   if (!days || days.length === 0) {
     return {
@@ -105,6 +106,7 @@ export function calculateStreak(
 
   let currentRun = 0;
   let currentRunStart = '';
+  let longestMisses = 0;
 
   for (let i = 0; i < sortedDays.length; i++) {
     const day = sortedDays[i];
@@ -116,15 +118,19 @@ export function calculateStreak(
         currentRunStart = day.date;
       }
       currentRun++;
+      longestMisses = 0;
 
       if (currentRun > longestStreak) {
         longestStreak = currentRun;
         longestStreakStart = currentRunStart;
         longestStreakEnd = day.date;
       }
+    } else if (currentRun > 0 && longestMisses < graceDays) {
+      longestMisses++;
     } else {
       currentRun = 0;
       currentRunStart = '';
+      longestMisses = 0;
     }
   }
 
@@ -157,12 +163,17 @@ export function calculateStreak(
 
   if (pointerDate) {
     let checkDate = pointerDate;
+    let currentMisses = 0;
     while (true) {
       const count = dayMap.get(checkDate) || 0;
       if (count > 0) {
         currentStreak++;
         currentStreakStart = checkDate;
+        currentMisses = 0;
         streakDaysList.unshift({ date: checkDate, count });
+        checkDate = shiftDateString(checkDate, -1);
+      } else if (currentStreak > 0 && currentMisses < graceDays) {
+        currentMisses++;
         checkDate = shiftDateString(checkDate, -1);
       } else {
         break;

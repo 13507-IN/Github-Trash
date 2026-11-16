@@ -57,6 +57,7 @@ export interface CardOptions {
   username: string;
   theme?: string;
   timezone?: string;
+  graceDays?: number;
   hideBorder?: boolean;
   borderRadius?: number;
   customTitle?: string;

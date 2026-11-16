@@ -1,0 +1,71 @@
+<svg width="495" height="195" viewBox="0 0 495 195" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: #0d1117; stroke: #30363d; stroke-width: 1px; rx: 10px; }
+    .card-title { font: 600 17px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #58a6ff; }
+    .lang-name { font: 500 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #c9d1d9; }
+    .lang-pct { font: 400 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #8b949e; }
+    .no-data { font: 500 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #8b949e; text-anchor: middle; }
+  </style>
+
+  <rect x="0.5" y="0.5" width="494" height="194" class="bg" />
+
+  
+  <text x="30" y="36" class="card-title">Most Used Languages</text>
+  
+
+  
+  <!-- Progress Bar Container -->
+  <g transform="translate(30, 52)">
+    <mask id="bar-mask">
+      <rect x="0" y="0" width="435" height="8" rx="4" fill="#fff" />
+    </mask>
+    <rect x="0" y="0" width="435" height="8" rx="4" fill="#21262d" />
+    <g mask="url(#bar-mask)">
+      <rect x="0" y="0" width="237.94500000000002" height="8" fill="#3178c6" /><rect x="237.94500000000002" y="0" width="113.97" height="8" fill="#f1e05a" /><rect x="351.915" y="0" width="73.08" height="8" fill="#e34c26" /><rect x="424.995" y="0" width="9.135" height="8" fill="#3572A5" /><rect x="434.13" y="0" width="1" height="8" fill="#4F5D95" /><rect x="435" y="0" width="1" height="8" fill="#dea584" />
+    </g>
+  </g>
+
+  <!-- Languages Legend Grid -->
+  <g transform="translate(30, 85)">
+    <!-- Column 1 -->
+    <g transform="translate(0, 0)">
+      
+        <g transform="translate(0, 0)">
+          <circle cx="5" cy="5" r="5" fill="#3178c6" />
+          <text x="20" y="9" class="lang-name">TypeScript</text>
+          <text x="145" y="9" class="lang-pct">54.7%</text>
+        </g>
+        <g transform="translate(0, 26)">
+          <circle cx="5" cy="5" r="5" fill="#f1e05a" />
+          <text x="20" y="9" class="lang-name">JavaScript</text>
+          <text x="145" y="9" class="lang-pct">26.2%</text>
+        </g>
+        <g transform="translate(0, 52)">
+          <circle cx="5" cy="5" r="5" fill="#e34c26" />
+          <text x="20" y="9" class="lang-name">HTML</text>
+          <text x="145" y="9" class="lang-pct">16.8%</text>
+        </g>
+    </g>
+
+    <!-- Column 2 -->
+    <g transform="translate(225, 0)">
+      
+        <g transform="translate(0, 0)">
+          <circle cx="5" cy="5" r="5" fill="#3572A5" />
+          <text x="20" y="9" class="lang-name">Python</text>
+          <text x="145" y="9" class="lang-pct">2.1%</text>
+        </g>
+        <g transform="translate(0, 26)">
+          <circle cx="5" cy="5" r="5" fill="#4F5D95" />
+          <text x="20" y="9" class="lang-name">PHP</text>
+          <text x="145" y="9" class="lang-pct">0.2%</text>
+        </g>
+        <g transform="translate(0, 52)">
+          <circle cx="5" cy="5" r="5" fill="#dea584" />
+          <text x="20" y="9" class="lang-name">Rust</text>
+          <text x="145" y="9" class="lang-pct">0%</text>
+        </g>
+    </g>
+  </g>
+  
+</svg>

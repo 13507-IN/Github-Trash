@@ -28,6 +28,7 @@ function parseCardOptions(req: Request): CardOptions {
   const username = (q.username as string) || '';
   const theme = (q.theme as string) || 'github-dark';
   const timezone = (q.timezone as string) || 'UTC';
+  const graceDays = q.grace_days ? parseInt(q.grace_days as string, 10) : 0;
   const hideBorder = q.hide_border === 'true';
   const borderRadius = q.border_radius ? parseInt(q.border_radius as string, 10) : 10;
   const customTitle = q.custom_title as string | undefined;
@@ -38,6 +39,7 @@ function parseCardOptions(req: Request): CardOptions {
     username,
     theme,
     timezone,
+    graceDays,
     hideBorder,
     borderRadius,
     customTitle,
@@ -64,13 +66,13 @@ app.get('/api/streak', async (req: Request, res: Response) => {
     return;
   }
 
-  const cacheKey = `streak:${options.username}:${options.timezone}:${options.theme}:${options.hideBorder}`;
+  const cacheKey = `streak:${options.username}:${options.timezone}:${options.graceDays}:${options.theme}:${options.hideBorder}`;
 
   try {
     const svg = await getOrSetCache(
       cacheKey,
       async () => {
-        const data = await fetchStreakData(options.username, options.timezone);
+        const data = await fetchStreakData(options.username, options.timezone, options.graceDays);
         return renderStreakCard(data, options);
       },
       1000 * 60 * 60 // 1 hour memory cache

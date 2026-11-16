@@ -30,6 +30,10 @@ inputs:
     description: 'Border radius for cards (in pixels)'
     required: false
     default: '10'
+  grace_days:
+    description: 'Allowed missed days without breaking streak (e.g. 0 for strict, 1 for grace day)'
+    required: false
+    default: '0'
 
 runs:
   using: 'composite'
@@ -47,6 +51,7 @@ runs:
           --timezone "${{ inputs.timezone }}" \
           --theme "${{ inputs.theme }}" \
           --output "${{ inputs.output }}" \
+          --grace-days "${{ inputs.grace_days }}" \
           ${{ inputs.hide_border == 'true' && '--hide-border' || '' }} \
           --border-radius "${{ inputs.border_radius }}"
       env:

@@ -14,6 +14,7 @@ function parseArgs(): {
   timezone: string;
   hideBorder: boolean;
   borderRadius: number;
+  graceDays: number;
 } {
   const args = process.argv.slice(2);
   let username = process.env.GITHUB_ACTOR || process.env.USERNAME || '';
@@ -22,6 +23,7 @@ function parseArgs(): {
   let timezone = process.env.TIMEZONE || 'UTC';
   let hideBorder = false;
   let borderRadius = 10;
+  let graceDays = 0;
 
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
@@ -37,10 +39,12 @@ function parseArgs(): {
       hideBorder = true;
     } else if (arg === '--border-radius') {
       borderRadius = parseInt(args[++i], 10);
+    } else if (arg === '--grace-days') {
+      graceDays = parseInt(args[++i], 10);
     }
   }
 
-  return { username, outputDir, theme, timezone, hideBorder, borderRadius };
+  return { username, outputDir, theme, timezone, hideBorder, borderRadius, graceDays };
 }
 
 async function main() {
@@ -58,6 +62,7 @@ async function main() {
     username: config.username,
     theme: config.theme,
     timezone: config.timezone,
+    graceDays: config.graceDays,
     hideBorder: config.hideBorder,
     borderRadius: config.borderRadius
   };
@@ -70,7 +75,7 @@ async function main() {
   // 1. Generate Streak Card
   try {
     console.log('⏳ Calculating streak data...');
-    const streakData = await fetchStreakData(config.username, config.timezone);
+    const streakData = await fetchStreakData(config.username, config.timezone, config.graceDays);
     const streakSvg = renderStreakCard(streakData, options);
     const streakPath = path.join(resolvedOutputDir, 'streak.svg');
     fs.writeFileSync(streakPath, streakSvg, 'utf-8');

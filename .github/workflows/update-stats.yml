@@ -12,6 +12,9 @@ permissions:
 jobs:
   build-and-update-stats:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Github-Stats
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,7 +28,7 @@ jobs:
         run: npm ci
 
       - name: Generate Stats Cards
-        run: npm run generate -- --username "${{ github.repository_owner }}" --timezone "Asia/Kolkata" --theme "github-dark" --output "./stats"
+        run: npm run generate -- --username "${{ github.repository_owner }}" --timezone "Asia/Kolkata" --grace-days 1 --theme "github-dark" --output "./stats"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

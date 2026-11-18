@@ -4,7 +4,11 @@ import { fetchStreakData, fetchUserStatsData, fetchLanguagesData } from './fetch
 import { renderStreakCard } from './cards/streak-card.js';
 import { renderStatsCard } from './cards/stats-card.js';
 import { renderLanguagesCard } from './cards/languages-card.js';
+import { renderRPGCard } from './cards/rpg-card.js';
+import { renderWorthCard } from './cards/worth-card.js';
 import { renderErrorCard } from './cards/error-card.js';
+import { calculateRPG } from './utils/rpg-calc.js';
+import { calculateWorth } from './utils/worth-calc.js';
 import { getOrSetCache } from './utils/cache.js';
 import { CardOptions } from './types.js';
 import { themes } from './themes/index.js';
@@ -29,6 +33,7 @@ function parseCardOptions(req: Request): CardOptions {
   const theme = (q.theme as string) || 'github-dark';
   const timezone = (q.timezone as string) || 'UTC';
   const graceDays = q.grace_days ? parseInt(q.grace_days as string, 10) : 0;
+  const currency = (q.currency as string) || '$';
   const hideBorder = q.hide_border === 'true';
   const borderRadius = q.border_radius ? parseInt(q.border_radius as string, 10) : 10;
   const customTitle = q.custom_title as string | undefined;
@@ -40,6 +45,7 @@ function parseCardOptions(req: Request): CardOptions {
     theme,
     timezone,
     graceDays,
+    currency,
     hideBorder,
     borderRadius,
     customTitle,
@@ -142,6 +148,71 @@ app.get('/api/languages', async (req: Request, res: Response) => {
 });
 
 /**
+ * GET /api/rpg - Developer Character Card
+ */
+app.get('/api/rpg', async (req: Request, res: Response) => {
+  const options = parseCardOptions(req);
+  if (!options.username) {
+    sendSvg(res, renderErrorCard('Username parameter is required', 'Add ?username=YOUR_GITHUB_USERNAME'));
+    return;
+  }
+
+  const cacheKey = `rpg:${options.username}:${options.timezone}:${options.graceDays}:${options.theme}:${options.hideBorder}`;
+
+  try {
+    const svg = await getOrSetCache(
+      cacheKey,
+      async () => {
+        const [statsData, streakData, langsData] = await Promise.all([
+          fetchUserStatsData(options.username),
+          fetchStreakData(options.username, options.timezone, options.graceDays),
+          fetchLanguagesData(options.username)
+        ]);
+        const rpgData = calculateRPG(statsData, streakData, langsData);
+        return renderRPGCard(rpgData, options);
+      },
+      1000 * 60 * 60 * 2
+    );
+    sendSvg(res, svg);
+  } catch (err: any) {
+    console.error('RPG API error:', err);
+    sendSvg(res, renderErrorCard('Could not load RPG card', err.message || 'Please check username or token'));
+  }
+});
+
+/**
+ * GET /api/worth - GitHub Account Valuation Card
+ */
+app.get('/api/worth', async (req: Request, res: Response) => {
+  const options = parseCardOptions(req);
+  if (!options.username) {
+    sendSvg(res, renderErrorCard('Username parameter is required', 'Add ?username=YOUR_GITHUB_USERNAME'));
+    return;
+  }
+
+  const cacheKey = `worth:${options.username}:${options.timezone}:${options.currency}:${options.graceDays}:${options.theme}:${options.hideBorder}`;
+
+  try {
+    const svg = await getOrSetCache(
+      cacheKey,
+      async () => {
+        const [statsData, streakData] = await Promise.all([
+          fetchUserStatsData(options.username),
+          fetchStreakData(options.username, options.timezone, options.graceDays)
+        ]);
+        const worthData = calculateWorth(statsData, streakData, options.currency || '$');
+        return renderWorthCard(worthData, options);
+      },
+      1000 * 60 * 60 * 2
+    );
+    sendSvg(res, svg);
+  } catch (err: any) {
+    console.error('Worth API error:', err);
+    sendSvg(res, renderErrorCard('Could not load Worth card', err.message || 'Please check username or token'));
+  }
+});
+
+/**
  * Interactive Preview Playground UI
  */
 app.get('/', (req: Request, res: Response) => {
@@ -209,16 +280,16 @@ app.get('/', (req: Request, res: Response) => {
 <body>
   <div class="container">
     <header>
-      <div class="hero-badge">⚡ Zero-Downtime • Timezone-Accurate</div>
-      <h1>GitHub Stats & Streak Cards</h1>
-      <p class="tagline">Never suffer from broken images or dropped streaks again. Built for rock-solid reliability in your GitHub profile README.</p>
+      <div class="hero-badge">⚡ Zero-Downtime • RPG Cards • Valuation Engine</div>
+      <h1>GitHub Stats & Experience Suite</h1>
+      <p class="tagline">From accurate streaks to RPG Character Sheets and Account Net Worth. Built for rock-solid reliability in your GitHub profile README.</p>
     </header>
 
     <div class="control-panel">
       <div class="form-grid">
         <div class="field">
           <label for="username">GitHub Username</label>
-          <input type="text" id="username" placeholder="e.g. torvalds" value="octocat">
+          <input type="text" id="username" placeholder="e.g. 13507-IN" value="13507-IN">
         </div>
         <div class="field">
           <label for="theme">Theme</label>
@@ -228,7 +299,11 @@ app.get('/', (req: Request, res: Response) => {
         </div>
         <div class="field">
           <label for="timezone">Timezone</label>
-          <input type="text" id="timezone" placeholder="e.g. Asia/Kolkata or UTC" value="UTC">
+          <input type="text" id="timezone" placeholder="e.g. Asia/Kolkata or UTC" value="Asia/Kolkata">
+        </div>
+        <div class="field">
+          <label for="graceDays">Grace Days (Streak Freeze)</label>
+          <input type="number" id="graceDays" min="0" max="3" value="1">
         </div>
       </div>
 
@@ -250,16 +325,24 @@ app.get('/', (req: Request, res: Response) => {
 
     <div class="cards-preview">
       <div class="card-slot">
-        <h3><span>Streak Card</span> <span style="font-size: 0.8rem; color: #2ea44f;">● Live Vector</span></h3>
-        <img id="img-streak" src="/api/streak?username=octocat&theme=github-dark" alt="Streak Card">
+        <h3><span>🎮 RPG Developer Character Sheet</span> <span style="font-size: 0.8rem; color: #2ea44f;">● Live Vector</span></h3>
+        <img id="img-rpg" src="/api/rpg?username=13507-IN&theme=github-dark&grace_days=1" alt="RPG Card">
       </div>
       <div class="card-slot">
-        <h3><span>General Stats Card</span> <span style="font-size: 0.8rem; color: #2ea44f;">● Live Vector</span></h3>
-        <img id="img-stats" src="/api/stats?username=octocat&theme=github-dark" alt="Stats Card">
+        <h3><span>💰 GitHub Account Worth / Valuation</span> <span style="font-size: 0.8rem; color: #2ea44f;">● Live Vector</span></h3>
+        <img id="img-worth" src="/api/worth?username=13507-IN&theme=github-dark&grace_days=1" alt="Worth Card">
       </div>
       <div class="card-slot">
-        <h3><span>Top Languages Card</span> <span style="font-size: 0.8rem; color: #2ea44f;">● Live Vector</span></h3>
-        <img id="img-langs" src="/api/languages?username=octocat&theme=github-dark" alt="Languages Card">
+        <h3><span>🔥 Streak Card (Grace Day Aware)</span> <span style="font-size: 0.8rem; color: #2ea44f;">● Live Vector</span></h3>
+        <img id="img-streak" src="/api/streak?username=13507-IN&theme=github-dark&grace_days=1" alt="Streak Card">
+      </div>
+      <div class="card-slot">
+        <h3><span>📊 General Stats Card</span> <span style="font-size: 0.8rem; color: #2ea44f;">● Live Vector</span></h3>
+        <img id="img-stats" src="/api/stats?username=13507-IN&theme=github-dark" alt="Stats Card">
+      </div>
+      <div class="card-slot">
+        <h3><span>💻 Top Languages Card</span> <span style="font-size: 0.8rem; color: #2ea44f;">● Live Vector</span></h3>
+        <img id="img-langs" src="/api/languages?username=13507-IN&theme=github-dark" alt="Languages Card">
       </div>
     </div>
 
@@ -271,28 +354,29 @@ app.get('/', (req: Request, res: Response) => {
       </div>
 
       <div id="tab-action" class="tab-content">
-        <p style="color: var(--subtext); margin-bottom: 12px;">Generates static SVGs directly into your repository via a daily GitHub Action. Because GitHub serves them directly, this is <strong>100% immune to API rate limits, server crashes, or Camo timeouts</strong>.</p>
+        <p style="color: var(--subtext); margin-bottom: 12px;">Generates static SVGs directly into your repository via a scheduled GitHub Action. Served straight by GitHub CDN with <strong>100% uptime</strong>.</p>
         <div class="code-container">
           <button class="copy-btn" onclick="copyActionCode()">Copy Workflow YAML</button>
-          <pre id="action-yaml">name: Update GitHub Stats Cards
+          <pre id="action-yaml">name: Update GitHub Stats & RPG Cards
 
 on:
   schedule:
     - cron: '0 */6 * * *' # Updates every 6 hours
-  workflow_dispatch: # Allows manual trigger anytime
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update-stats:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Generate Stats Cards
-        run: npx github-stats --username \${{ github.repository_owner }} --timezone Asia/Kolkata --theme github-dark --output ./stats
+      - name: Generate Cards
+        run: npx github-stats-cards --username \${{ github.repository_owner }} --timezone Asia/Kolkata --grace-days 1 --theme github-dark --output ./stats
         env:
           GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
       - name: Commit and Push
@@ -300,15 +384,18 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add stats/
-          git commit -m "Update GitHub stats cards [skip ci]" || exit 0
+          git commit -m "Update profile cards [skip ci]" || exit 0
           git push</pre>
         </div>
         <p style="color: var(--subtext); margin-top: 16px; margin-bottom: 8px;">Then in your README.md, simply paste:</p>
         <div class="code-container">
           <pre id="action-readme-md">&lt;p align="center"&gt;
-  &lt;img src="./stats/streak.svg" alt="GitHub Streak" /&gt;
-  &lt;img src="./stats/stats.svg" alt="GitHub Stats" /&gt;
-  &lt;img src="./stats/languages.svg" alt="Top Languages" /&gt;
+  &lt;img src="./stats/rpg.svg" alt="Developer RPG Sheet" width="480" /&gt;
+  &lt;img src="./stats/worth.svg" alt="GitHub Account Valuation" width="480" /&gt;
+&lt;/p&gt;
+&lt;p align="center"&gt;
+  &lt;img src="./stats/streak.svg" alt="GitHub Streak" width="480" /&gt;
+  &lt;img src="./stats/stats.svg" alt="GitHub Stats" width="480" /&gt;
 &lt;/p&gt;</pre>
         </div>
       </div>
@@ -325,25 +412,33 @@ jobs:
 
   <script>
     function updateCards() {
-      const username = document.getElementById('username').value.trim() || 'octocat';
+      const username = document.getElementById('username').value.trim() || '13507-IN';
       const theme = document.getElementById('theme').value;
-      const timezone = document.getElementById('timezone').value.trim() || 'UTC';
+      const timezone = document.getElementById('timezone').value.trim() || 'Asia/Kolkata';
+      const graceDays = document.getElementById('graceDays').value || '1';
       const hideBorder = document.getElementById('hideBorder').checked;
       const hideRank = document.getElementById('hideRank').checked;
 
       const base = window.location.origin;
-      const streakUrl = base + '/api/streak?username=' + encodeURIComponent(username) + '&theme=' + theme + '&timezone=' + encodeURIComponent(timezone) + (hideBorder ? '&hide_border=true' : '');
+      const streakUrl = base + '/api/streak?username=' + encodeURIComponent(username) + '&theme=' + theme + '&timezone=' + encodeURIComponent(timezone) + '&grace_days=' + graceDays + (hideBorder ? '&hide_border=true' : '');
       const statsUrl = base + '/api/stats?username=' + encodeURIComponent(username) + '&theme=' + theme + (hideBorder ? '&hide_border=true' : '') + (hideRank ? '&hide_rank=true' : '');
       const langsUrl = base + '/api/languages?username=' + encodeURIComponent(username) + '&theme=' + theme + (hideBorder ? '&hide_border=true' : '');
+      const rpgUrl = base + '/api/rpg?username=' + encodeURIComponent(username) + '&theme=' + theme + '&timezone=' + encodeURIComponent(timezone) + '&grace_days=' + graceDays + (hideBorder ? '&hide_border=true' : '');
+      const worthUrl = base + '/api/worth?username=' + encodeURIComponent(username) + '&theme=' + theme + '&timezone=' + encodeURIComponent(timezone) + '&grace_days=' + graceDays + (hideBorder ? '&hide_border=true' : '');
 
+      document.getElementById('img-rpg').src = rpgUrl;
+      document.getElementById('img-worth').src = worthUrl;
       document.getElementById('img-streak').src = streakUrl;
       document.getElementById('img-stats').src = statsUrl;
       document.getElementById('img-langs').src = langsUrl;
 
       const md = '&lt;p align="center"&gt;\\n' +
-        '  &lt;img src="' + streakUrl + '" alt="GitHub Streak" /&gt;\\n' +
-        '  &lt;img src="' + statsUrl + '" alt="GitHub Stats" /&gt;\\n' +
-        '  &lt;img src="' + langsUrl + '" alt="Top Languages" /&gt;\\n' +
+        '  &lt;img src="' + rpgUrl + '" alt="RPG Character Sheet" width="480" /&gt;\\n' +
+        '  &lt;img src="' + worthUrl + '" alt="GitHub Account Valuation" width="480" /&gt;\\n' +
+        '&lt;/p&gt;\\n' +
+        '&lt;p align="center"&gt;\\n' +
+        '  &lt;img src="' + streakUrl + '" alt="GitHub Streak" width="480" /&gt;\\n' +
+        '  &lt;img src="' + statsUrl + '" alt="GitHub Stats" width="480" /&gt;\\n' +
         '&lt;/p&gt;';
       document.getElementById('dynamic-md').innerHTML = md.replace(/\\n/g, '<br>');
     }
@@ -382,7 +477,7 @@ jobs:
 if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log(`⚡ GitHub Stats Server running at: http://localhost:${PORT}`);
-    console.log(`📊 Endpoints: /api/streak, /api/stats, /api/languages`);
+    console.log(`📊 Endpoints: /api/streak, /api/stats, /api/languages, /api/rpg, /api/worth`);
     console.log(`🎨 Web Playground: http://localhost:${PORT}`);
   });
 }

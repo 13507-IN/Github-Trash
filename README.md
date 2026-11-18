@@ -8,29 +8,34 @@
 
 | Product | Folder | Description | Status |
 | :--- | :--- | :--- | :--- |
-| **⚡ GitHub Stats & Streak Cards** | [`/Github-Stats`](./Github-Stats) | Timezone-accurate, 100% zero-downtime streak and stats cards for your profile README. | ✅ **Active & Ready** |
+| **🎮 RPG Developer Card** | [`/Github-Stats`](./Github-Stats) | Gamified developer character sheet with classes, levels, and stat attributes. | ✅ **Active** |
+| **💰 Account Worth / Valuation** | [`/Github-Stats`](./Github-Stats) | Calculates estimated commercial engineering value & market tier. | ✅ **Active** |
+| **🔥 Streak & Stats Cards** | [`/Github-Stats`](./Github-Stats) | Timezone-accurate, 100% zero-downtime streak and stats cards. | ✅ **Active** |
 | **🖼️ GitHub Images** | [`/Github-Images`](./Github-Images) | Dynamic banners, custom badges, headers, and visual assets for GitHub profiles. | 🚧 *In Development* |
 
 ---
 
-## ⚡ 1. GitHub Stats & Streak Cards
-
-A rock-solid replacement for buggy third-party stats services. Solves the dropped streak bug and broken image icon problem forever.
+## 🎮 The Full Card Suite
 
 <p align="center">
-  <img src="./Github-Stats/sample-output/streak-github-dark.svg" alt="GitHub Streak" width="480" />
+  <img src="./Github-Stats/user-stats/rpg.svg" alt="Developer RPG Sheet" width="480" />
+  <img src="./Github-Stats/user-stats/worth.svg" alt="GitHub Account Valuation" width="480" />
 </p>
 <p align="center">
-  <img src="./Github-Stats/sample-output/stats-github-dark.svg" alt="GitHub Stats" width="480" />
-  <img src="./Github-Stats/sample-output/languages-github-dark.svg" alt="Top Languages" width="480" />
+  <img src="./Github-Stats/user-stats/streak.svg" alt="GitHub Streak" width="480" />
+  <img src="./Github-Stats/user-stats/stats.svg" alt="GitHub Stats" width="480" />
+</p>
+<p align="center">
+  <img src="./Github-Stats/user-stats/languages.svg" alt="Top Languages" width="480" />
 </p>
 
 ### Key Highlights:
+- **🎮 RPG Character Sheet**: Determines your character class (*TypeScript Spellblade, Async Warlock, Data Necromancer, etc.*), computes your Level & XP, and scores your STR, INT, DEX, CHA, and STA attributes!
+- **💰 Account Valuation Engine**: Evaluates commit volume, repository architecture, star equity, and consistency multipliers into an estimated commercial dev net worth (*e.g. $85,500 - Principal / Staff Architect Tier*).
 - **100% Zero Downtime**: Served directly by GitHub's CDN via GitHub Actions.
 - **Timezone Accurate**: Calculates streaks in your exact timezone (`Asia/Kolkata`, `UTC`, `America/New_York`, etc.).
 - **Grace Day Support**: `--grace-days 1` allows your streak to survive accidental 1-day gaps, travel, or private commit delays.
 - **10+ Themes**: `github-dark`, `tokyonight`, `dracula`, `nord`, `cyberpunk`, `radical`, `catppuccin`, and more.
-- **Dual-Mode**: Use it as a GitHub Action or run the Express Web API server with an interactive live playground.
 
 👉 **[Read full GitHub-Stats documentation & setup guide →](./Github-Stats/README.md)**
 
@@ -41,7 +46,7 @@ A rock-solid replacement for buggy third-party stats services. Solves the droppe
 In your profile repository, create `.github/workflows/update-stats.yml`:
 
 ```yaml
-name: Update Profile Stats
+name: Update Profile Stats & RPG Cards
 
 on:
   schedule:
@@ -62,8 +67,8 @@ jobs:
         with:
           username: ${{ github.repository_owner }}
           timezone: Asia/Kolkata
-          theme: github-dark
           grace_days: 1
+          theme: github-dark
           output: ./stats
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -73,17 +78,21 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add stats/
-          git commit -m "Update profile stats [skip ci]" || exit 0
+          git commit -m "Update profile cards [skip ci]" || exit 0
           git push
 ```
 
----
-
-## 🖼️ 2. GitHub Images
-
-Dynamic header banners, custom SVG widgets, and badges designed to give developer profiles an unfair aesthetic advantage.
-
-👉 **[Explore GitHub-Images →](./Github-Images/README.md)**
+And in your `README.md`:
+```markdown
+<p align="center">
+  <img src="./stats/rpg.svg" alt="Developer RPG Sheet" width="480" />
+  <img src="./stats/worth.svg" alt="GitHub Account Valuation" width="480" />
+</p>
+<p align="center">
+  <img src="./stats/streak.svg" alt="GitHub Streak" width="480" />
+  <img src="./stats/stats.svg" alt="GitHub Stats" width="480" />
+</p>
+```
 
 ---
 

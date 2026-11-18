@@ -40,6 +40,41 @@ export interface LanguagesData {
   languages: LanguageItem[];
 }
 
+export interface RPGData {
+  characterClass: string;
+  title: string;
+  level: number;
+  xp: {
+    current: number;
+    next: number;
+    percentage: number;
+  };
+  stats: {
+    str: number; // Commit volume & brute force
+    int: number; // Language complexity & variety
+    dex: number; // PRs & Issue agility
+    cha: number; // Stars & community influence
+    sta: number; // Streak endurance
+  };
+  weapon: string;
+  passivePerk: string;
+}
+
+export interface WorthData {
+  totalWorth: number;
+  currency: string;
+  tier: string;
+  engineeringHours: number;
+  hourlyRate: number;
+  breakdown: {
+    commitsValue: number;
+    reposValue: number;
+    starsValue: number;
+    streakBonus: number;
+    multiplier: number;
+  };
+}
+
 export interface ThemeColors {
   background: string;
   cardBorder: string;
@@ -58,6 +93,7 @@ export interface CardOptions {
   theme?: string;
   timezone?: string;
   graceDays?: number;
+  currency?: string;
   hideBorder?: boolean;
   borderRadius?: number;
   customTitle?: string;

@@ -21,7 +21,7 @@
     </mask>
     <rect x="0" y="0" width="435" height="8" rx="4" fill="#21262d" />
     <g mask="url(#bar-mask)">
-      <rect x="0" y="0" width="237.94500000000002" height="8" fill="#3178c6" /><rect x="237.94500000000002" y="0" width="113.97" height="8" fill="#f1e05a" /><rect x="351.915" y="0" width="73.08" height="8" fill="#e34c26" /><rect x="424.995" y="0" width="9.135" height="8" fill="#3572A5" /><rect x="434.13" y="0" width="1" height="8" fill="#4F5D95" /><rect x="435" y="0" width="1" height="8" fill="#dea584" />
+      <rect x="0" y="0" width="238.37999999999997" height="8" fill="#3178c6" /><rect x="238.37999999999997" y="0" width="113.97" height="8" fill="#f1e05a" /><rect x="352.34999999999997" y="0" width="73.08" height="8" fill="#e34c26" /><rect x="425.42999999999995" y="0" width="9.135" height="8" fill="#3572A5" /><rect x="434.56499999999994" y="0" width="1" height="8" fill="#4F5D95" /><rect x="435.43499999999995" y="0" width="1" height="8" fill="#dea584" />
     </g>
   </g>
 
@@ -33,7 +33,7 @@
         <g transform="translate(0, 0)">
           <circle cx="5" cy="5" r="5" fill="#3178c6" />
           <text x="20" y="9" class="lang-name">TypeScript</text>
-          <text x="145" y="9" class="lang-pct">54.7%</text>
+          <text x="145" y="9" class="lang-pct">54.8%</text>
         </g>
         <g transform="translate(0, 26)">
           <circle cx="5" cy="5" r="5" fill="#f1e05a" />

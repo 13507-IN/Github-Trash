@@ -23,7 +23,7 @@
 
   <!-- Left Column: Total Contributions -->
   <g transform="translate(100, 0)">
-    <text x="0" y="74" class="num-large">1,559</text>
+    <text x="0" y="74" class="num-large">1,568</text>
     <text x="0" y="106" class="label">Total Contributions</text>
     <text x="0" y="128" class="subtext">Nov 17, 2025 - Present</text>
   </g>
@@ -41,14 +41,14 @@
     <!-- Ring Background -->
     <circle cx="0" cy="74" r="36" class="ring-bg" />
     <!-- Ring Progress -->
-    <circle cx="247" cy="74" r="36" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="137.0909090909091" />
+    <circle cx="247" cy="74" r="36" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="92.53636363636363" />
 
     <!-- Current Streak Number Inside Ring -->
-    <text x="0" y="75" class="num-current">13</text>
+    <text x="0" y="75" class="num-current">26</text>
 
     <!-- Label & Range -->
     <text x="0" y="130" class="label-current">Current Streak</text>
-    <text x="0" y="152" class="subtext">Nov 4 - Nov 16</text>
+    <text x="0" y="152" class="subtext">Oct 23 - Nov 18 (Pending today)</text>
   </g>
 
   <!-- Vertical Divider 2 -->
@@ -56,8 +56,8 @@
 
   <!-- Right Column: Longest Streak -->
   <g transform="translate(395, 0)">
-    <text x="0" y="74" class="num-large">33</text>
+    <text x="0" y="74" class="num-large">44</text>
     <text x="0" y="106" class="label">Longest Streak</text>
-    <text x="0" y="128" class="subtext">Feb 3 - Mar 7</text>
+    <text x="0" y="128" class="subtext">Jan 22 - Mar 12</text>
   </g>
 </svg>

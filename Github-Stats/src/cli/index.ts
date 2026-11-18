@@ -6,7 +6,11 @@ import { fetchStreakData, fetchUserStatsData, fetchLanguagesData } from '../fetc
 import { renderStreakCard } from '../cards/streak-card.js';
 import { renderStatsCard } from '../cards/stats-card.js';
 import { renderLanguagesCard } from '../cards/languages-card.js';
-import { CardOptions } from '../types.js';
+import { renderRPGCard } from '../cards/rpg-card.js';
+import { renderWorthCard } from '../cards/worth-card.js';
+import { calculateRPG } from '../utils/rpg-calc.js';
+import { calculateWorth } from '../utils/worth-calc.js';
+import { CardOptions, StreakData, UserStatsData, LanguagesData } from '../types.js';
 
 function parseArgs(): {
   username: string;
@@ -16,6 +20,7 @@ function parseArgs(): {
   hideBorder: boolean;
   borderRadius: number;
   graceDays: number;
+  currency: string;
 } {
   const args = process.argv.slice(2);
   let username = process.env.GITHUB_ACTOR || process.env.USERNAME || '';
@@ -25,6 +30,7 @@ function parseArgs(): {
   let hideBorder = false;
   let borderRadius = 10;
   let graceDays = 0;
+  let currency = '$';
 
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
@@ -42,10 +48,12 @@ function parseArgs(): {
       borderRadius = parseInt(args[++i], 10);
     } else if (arg === '--grace-days') {
       graceDays = parseInt(args[++i], 10);
+    } else if (arg === '--currency') {
+      currency = args[++i];
     }
   }
 
-  return { username, outputDir, theme, timezone, hideBorder, borderRadius, graceDays };
+  return { username, outputDir, theme, timezone, hideBorder, borderRadius, graceDays, currency };
 }
 
 async function main() {
@@ -56,7 +64,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`🚀 Generating GitHub Stats Cards for: @${config.username}`);
+  console.log(`🚀 Generating GitHub Cards for: @${config.username}`);
   console.log(`🎨 Theme: ${config.theme} | Timezone: ${config.timezone} | Output: ${config.outputDir}`);
 
   const options: CardOptions = {
@@ -65,7 +73,8 @@ async function main() {
     timezone: config.timezone,
     graceDays: config.graceDays,
     hideBorder: config.hideBorder,
-    borderRadius: config.borderRadius
+    borderRadius: config.borderRadius,
+    currency: config.currency
   };
 
   const resolvedOutputDir = path.resolve(process.cwd(), config.outputDir);
@@ -73,10 +82,14 @@ async function main() {
     fs.mkdirSync(resolvedOutputDir, { recursive: true });
   }
 
+  let streakData: StreakData | null = null;
+  let statsData: UserStatsData | null = null;
+  let langsData: LanguagesData | null = null;
+
   // 1. Generate Streak Card
   try {
     console.log('⏳ Calculating streak data...');
-    const streakData = await fetchStreakData(config.username, config.timezone, config.graceDays);
+    streakData = await fetchStreakData(config.username, config.timezone, config.graceDays);
     const streakSvg = renderStreakCard(streakData, options);
     const streakPath = path.join(resolvedOutputDir, 'streak.svg');
     fs.writeFileSync(streakPath, streakSvg, 'utf-8');
@@ -88,7 +101,7 @@ async function main() {
   // 2. Generate Stats Card
   try {
     console.log('⏳ Fetching overall stats...');
-    const statsData = await fetchUserStatsData(config.username);
+    statsData = await fetchUserStatsData(config.username);
     const statsSvg = renderStatsCard(statsData, options);
     const statsPath = path.join(resolvedOutputDir, 'stats.svg');
     fs.writeFileSync(statsPath, statsSvg, 'utf-8');
@@ -100,13 +113,41 @@ async function main() {
   // 3. Generate Languages Card
   try {
     console.log('⏳ Analyzing top languages...');
-    const langsData = await fetchLanguagesData(config.username);
+    langsData = await fetchLanguagesData(config.username);
     const langsSvg = renderLanguagesCard(langsData, options);
     const langsPath = path.join(resolvedOutputDir, 'languages.svg');
     fs.writeFileSync(langsPath, langsSvg, 'utf-8');
     console.log(`✅ Saved: ${langsPath} (${langsData.languages.length} languages tracked)`);
   } catch (err: any) {
     console.error('❌ Failed to generate languages card:', err.message || err);
+  }
+
+  // 4. Generate RPG Character Card
+  if (statsData && streakData && langsData) {
+    try {
+      console.log('⏳ Generating RPG Character Sheet...');
+      const rpgData = calculateRPG(statsData, streakData, langsData);
+      const rpgSvg = renderRPGCard(rpgData, options);
+      const rpgPath = path.join(resolvedOutputDir, 'rpg.svg');
+      fs.writeFileSync(rpgPath, rpgSvg, 'utf-8');
+      console.log(`✅ Saved: ${rpgPath} (Class: ${rpgData.characterClass}, Level: ${rpgData.level})`);
+    } catch (err: any) {
+      console.error('❌ Failed to generate RPG card:', err.message || err);
+    }
+  }
+
+  // 5. Generate Account Valuation / Worth Card
+  if (statsData && streakData) {
+    try {
+      console.log('⏳ Calculating GitHub account valuation...');
+      const worthData = calculateWorth(statsData, streakData, options.currency || '$');
+      const worthSvg = renderWorthCard(worthData, options);
+      const worthPath = path.join(resolvedOutputDir, 'worth.svg');
+      fs.writeFileSync(worthPath, worthSvg, 'utf-8');
+      console.log(`✅ Saved: ${worthPath} (Estimated Worth: ${worthData.currency}${worthData.totalWorth.toLocaleString()}, Tier: ${worthData.tier})`);
+    } catch (err: any) {
+      console.error('❌ Failed to generate Worth card:', err.message || err);
+    }
   }
 
   console.log('🎉 All cards generated successfully!');

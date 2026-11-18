@@ -41,14 +41,14 @@
     <!-- Ring Background -->
     <circle cx="0" cy="74" r="36" class="ring-bg" />
     <!-- Ring Progress -->
-    <circle cx="247" cy="74" r="36" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="102.81818181818183" />
+    <circle cx="247" cy="74" r="36" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="226.2" />
 
     <!-- Current Streak Number Inside Ring -->
-    <text x="0" y="75" class="num-current">24</text>
+    <text x="0" y="75" class="num-current">0</text>
 
     <!-- Label & Range -->
     <text x="0" y="130" class="label-current">Current Streak</text>
-    <text x="0" y="152" class="subtext">Oct 23 - Nov 16 (Pending today)</text>
+    <text x="0" y="152" class="subtext">Inactive</text>
   </g>
 
   <!-- Vertical Divider 2 -->

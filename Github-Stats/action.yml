@@ -43,10 +43,14 @@ runs:
       with:
         node-version: 22
 
+    - name: Install action dependencies
+      shell: bash
+      run: npm ci --prefix "${{ github.action_path }}" --no-audit --no-fund
+
     - name: Generate Cards
       shell: bash
       run: |
-        npx tsx "${{ github.action_path }}/src/cli/index.ts" \
+        "${{ github.action_path }}/node_modules/.bin/tsx" "${{ github.action_path }}/src/cli/index.ts" \
           --username "${{ inputs.username }}" \
           --timezone "${{ inputs.timezone }}" \
           --theme "${{ inputs.theme }}" \

@@ -1,0 +1,94 @@
+<svg width="495" height="195" viewBox="0 0 495 195" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: #0d1117; stroke: #30363d; stroke-width: 1px; rx: 10px; }
+    .class-title { font: 800 17px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #58a6ff; }
+    .sub-title { font: 500 11px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #8b949e; }
+    .lvl-badge { fill: #58a6ff; font: 800 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .xp-text { font: 500 10px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #8b949e; text-anchor: end; }
+    .stat-label { font: 700 11px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #c9d1d9; }
+    .stat-val { font: 700 11px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #c9d1d9; text-anchor: end; }
+    .perk-text { font: 500 11px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #8b949e; }
+    .weapon-text { font: 600 11px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: #c9d1d9; }
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 2px #58a6ff44); }
+      50% { filter: drop-shadow(0 0 6px #58a6ffaa); }
+      100% { filter: drop-shadow(0 0 2px #58a6ff44); }
+    }
+    .glowing-badge { animation: glow 3s infinite ease-in-out; }
+  </style>
+
+  <rect x="0.5" y="0.5" width="494" height="194" class="bg" />
+
+  <!-- Header: Class & Level -->
+  <g transform="translate(25, 20)">
+    <!-- Level Badge -->
+    <rect x="0" y="0" width="58" height="22" rx="4" fill="#58a6ff22" stroke="#58a6ff" stroke-width="1" class="glowing-badge" />
+    <text x="29" y="15" text-anchor="middle" class="lvl-badge">LVL 22</text>
+
+    <!-- Class Name & Subtitle -->
+    <text x="70" y="16" class="class-title">Async Warlock</text>
+    <text x="70" y="32" class="sub-title">Battle-Tested Developer</text>
+
+    <!-- XP Bar -->
+    <g transform="translate(0, 42)">
+      <rect x="0" y="0" width="445" height="5" rx="2.5" fill="#21262d" />
+      <rect x="0" y="0" width="93.45" height="5" rx="2.5" fill="#58a6ff" />
+      <text x="445" y="-5" class="xp-text">XP 21%</text>
+    </g>
+  </g>
+
+  <!-- Middle: RPG Attribute Stats Row -->
+  <g transform="translate(25, 90)">
+    
+      <g transform="translate(0, 0)">
+        <text x="0" y="0" class="stat-label" fill="#f85149">STR</text>
+        <text x="80" y="0" class="stat-val">87</text>
+        <!-- Mini Bar -->
+        <rect x="0" y="7" width="80" height="4" rx="2" fill="#21262d" />
+        <rect x="0" y="7" width="70.3030303030303" height="4" rx="2" fill="#f85149" />
+      </g>
+      <g transform="translate(90, 0)">
+        <text x="0" y="0" class="stat-label" fill="#58a6ff">INT</text>
+        <text x="80" y="0" class="stat-val">78</text>
+        <!-- Mini Bar -->
+        <rect x="0" y="7" width="80" height="4" rx="2" fill="#21262d" />
+        <rect x="0" y="7" width="63.03030303030303" height="4" rx="2" fill="#58a6ff" />
+      </g>
+      <g transform="translate(180, 0)">
+        <text x="0" y="0" class="stat-label" fill="#e3b341">DEX</text>
+        <text x="80" y="0" class="stat-val">99</text>
+        <!-- Mini Bar -->
+        <rect x="0" y="7" width="80" height="4" rx="2" fill="#21262d" />
+        <rect x="0" y="7" width="80" height="4" rx="2" fill="#e3b341" />
+      </g>
+      <g transform="translate(270, 0)">
+        <text x="0" y="0" class="stat-label" fill="#bc8cff">CHA</text>
+        <text x="80" y="0" class="stat-val">76</text>
+        <!-- Mini Bar -->
+        <rect x="0" y="7" width="80" height="4" rx="2" fill="#21262d" />
+        <rect x="0" y="7" width="61.41414141414141" height="4" rx="2" fill="#bc8cff" />
+      </g>
+      <g transform="translate(360, 0)">
+        <text x="0" y="0" class="stat-label" fill="#39d353">STA</text>
+        <text x="80" y="0" class="stat-val">99</text>
+        <!-- Mini Bar -->
+        <rect x="0" y="7" width="80" height="4" rx="2" fill="#21262d" />
+        <rect x="0" y="7" width="80" height="4" rx="2" fill="#39d353" />
+      </g>
+  </g>
+
+  <!-- Divider -->
+  <line x1="25" y1="128" x2="470" y2="128" stroke="#30363d" stroke-width="1" opacity="0.6" />
+
+  <!-- Bottom: Equipped Weapon & Passive Perk -->
+  <g transform="translate(25, 148)">
+    <g transform="translate(0, 0)">
+      <text x="0" y="0" class="sub-title">EQUIPPED WEAPON:</text>
+      <text x="120" y="0" class="weapon-text">⚔️ Event-Loop Scythe</text>
+    </g>
+    <g transform="translate(0, 22)">
+      <text x="0" y="0" class="sub-title">ACTIVE PERK:</text>
+      <text x="120" y="0" class="perk-text">🔥 Unyielding Flame (Immune to burnout &amp; streak resets)</text>
+    </g>
+  </g>
+</svg>

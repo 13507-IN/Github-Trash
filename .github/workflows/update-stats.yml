@@ -2,8 +2,11 @@ name: Update GitHub Stats Cards
 
 on:
   schedule:
-    # Runs every 6 hours
-    - cron: '0 */6 * * *'
+    # Runs every 2 hours
+    - cron: '0 */2 * * *'
+  push:
+    branches:
+      - main
   workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
 permissions:
@@ -27,8 +30,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate Stats Cards
-        run: npm run generate -- --username "${{ github.repository_owner }}" --timezone "Asia/Kolkata" --grace-days 1 --theme "github-dark" --output "./stats"
+      - name: Build TypeScript
+        run: npm run build
+
+      - name: Generate Cards into stats and user-stats
+        run: |
+          npm run generate -- --username "${{ github.repository_owner }}" --timezone "Asia/Kolkata" --grace-days 1 --theme "github-dark" --output "./stats"
+          npm run generate -- --username "${{ github.repository_owner }}" --timezone "Asia/Kolkata" --grace-days 1 --theme "github-dark" --output "./user-stats"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -36,6 +44,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add stats/
-          git commit -m "Update profile stats and streak cards [skip ci]" || exit 0
+          git add stats/ user-stats/
+          git commit -m "Update profile cards and stats [skip ci]" || exit 0
           git push

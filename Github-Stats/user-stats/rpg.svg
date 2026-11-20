@@ -23,7 +23,7 @@
   <g transform="translate(25, 20)">
     <!-- Level Badge -->
     <rect x="0" y="0" width="58" height="22" rx="4" fill="#58a6ff22" stroke="#58a6ff" stroke-width="1" class="glowing-badge" />
-    <text x="29" y="15" text-anchor="middle" class="lvl-badge">LVL 21</text>
+    <text x="29" y="15" text-anchor="middle" class="lvl-badge">LVL 22</text>
 
     <!-- Class Name & Subtitle -->
     <text x="70" y="16" class="class-title">TypeScript Spellblade</text>
@@ -32,8 +32,8 @@
     <!-- XP Bar -->
     <g transform="translate(0, 42)">
       <rect x="0" y="0" width="445" height="5" rx="2.5" fill="#21262d" />
-      <rect x="0" y="0" width="422.75" height="5" rx="2.5" fill="#58a6ff" />
-      <text x="445" y="-5" class="xp-text">XP 95%</text>
+      <rect x="0" y="0" width="8.9" height="5" rx="2.5" fill="#58a6ff" />
+      <text x="445" y="-5" class="xp-text">XP 2%</text>
     </g>
   </g>
 

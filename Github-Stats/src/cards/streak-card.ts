@@ -65,14 +65,14 @@ export function renderStreakCard(data: StreakData, options: CardOptions): string
     .subtext { font: 400 11px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; fill: ${theme.subtextColor}; text-anchor: middle; }
     .divider { stroke: ${theme.cardBorder}; stroke-width: 1px; opacity: 0.7; }
     .ring-bg { stroke: ${theme.progressBarBg}; stroke-width: 4.5px; fill: none; }
-    .ring-progress { stroke: ${theme.ringColor}; stroke-width: 4.5px; stroke-linecap: round; fill: none; transform: rotate(-90deg); transform-origin: 247px 74px; transition: stroke-dashoffset 0.8s ease; }
+    .ring-progress { stroke: ${theme.ringColor}; stroke-width: 4.5px; stroke-linecap: round; fill: none; transform: rotate(-90deg); transform-origin: 0px 74px; transition: stroke-dashoffset 0.8s ease; }
     .flame { fill: ${theme.streakFireColor}; filter: drop-shadow(0px 0px 4px ${theme.streakFireColor}88); }
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.08); }
       100% { transform: scale(1); }
     }
-    .flame-anim { animation: pulse 2.5s infinite ease-in-out; transform-origin: 247px 30px; }
+    .flame-anim { animation: pulse 2.5s infinite ease-in-out; transform-origin: 0px 26px; }
   </style>
 
   <!-- Background Card -->
@@ -92,13 +92,13 @@ export function renderStreakCard(data: StreakData, options: CardOptions): string
   <g transform="translate(247, 0)">
     <!-- Flame Icon -->
     <g class="flame-anim">
-      <path class="flame" transform="translate(238, 20) scale(0.9)" d="M9.8 1.4c-.4.7-.6 1.6-.5 2.5.3 1.2 1.1 2.2 1.4 3.4.4 1.5.1 3.2-.8 4.4-.9 1.2-2.3 1.9-3.7 2-1.7.1-3.4-.8-4.3-2.2-.6-1-.8-2.3-.5-3.5.1-.4.3-.8.6-1.1.2-.2.6-.1.6.2 0 1 .3 2 1 2.7.5.5 1.3.8 2 .6.5-.1.9-.4 1.1-.9.3-.7.2-1.5-.1-2.2-.3-.8-.8-1.5-1.2-2.3-.6-1.2-.8-2.6-.5-3.9.1-.3.4-.6.7-.4.6.4 1.2 1 1.7 1.6 1.1 1.3 1.7 3 1.6 4.7 0 .3.4.5.6.3.8-.9 1.2-2.1 1.2-3.3 0-.7-.2-1.5-.6-2.1-.2-.3.1-.7.4-.5.4.3.7.6 1 1z" />
+      <path class="flame" transform="translate(-9, 16) scale(0.9)" d="M9.8 1.4c-.4.7-.6 1.6-.5 2.5.3 1.2 1.1 2.2 1.4 3.4.4 1.5.1 3.2-.8 4.4-.9 1.2-2.3 1.9-3.7 2-1.7.1-3.4-.8-4.3-2.2-.6-1-.8-2.3-.5-3.5.1-.4.3-.8.6-1.1.2-.2.6-.1.6.2 0 1 .3 2 1 2.7.5.5 1.3.8 2 .6.5-.1.9-.4 1.1-.9.3-.7.2-1.5-.1-2.2-.3-.8-.8-1.5-1.2-2.3-.6-1.2-.8-2.6-.5-3.9.1-.3.4-.6.7-.4.6.4 1.2 1 1.7 1.6 1.1 1.3 1.7 3 1.6 4.7 0 .3.4.5.6.3.8-.9 1.2-2.1 1.2-3.3 0-.7-.2-1.5-.6-2.1-.2-.3.1-.7.4-.5.4.3.7.6 1 1z" />
     </g>
 
     <!-- Ring Background -->
     <circle cx="0" cy="74" r="36" class="ring-bg" />
     <!-- Ring Progress -->
-    <circle cx="247" cy="74" r="36" class="ring-progress" stroke-dasharray="${circumference}" stroke-dashoffset="${strokeDashoffset}" />
+    <circle cx="0" cy="74" r="36" class="ring-progress" stroke-dasharray="${circumference}" stroke-dashoffset="${strokeDashoffset}" />
 
     <!-- Current Streak Number Inside Ring -->
     <text x="0" y="75" class="num-current">${escapeXml(currentStreakStr)}</text>

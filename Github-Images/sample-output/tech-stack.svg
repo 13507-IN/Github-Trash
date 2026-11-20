@@ -1,0 +1,74 @@
+<svg width="495" height="196" viewBox="0 0 495 196" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: #0d1117; stroke: #30363d; stroke-width: 1px; rx: 12px; }
+    .title { font: 700 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; fill: #58a6ff; }
+    .badge { font: 700 10px 'JetBrains Mono', monospace; fill: #10b981; }
+  </style>
+
+  <rect x="0.5" y="0.5" width="494" height="195" class="bg" />
+
+  <!-- Title Bar -->
+  <g transform="translate(25, 20)">
+    <text x="0" y="14" class="title">⚙️ Core Tech Stack & Tools</text>
+    <rect x="340" y="2" width="105" height="18" rx="9" fill="#10b98118" stroke="#10b98144" stroke-width="1" />
+    <text x="392" y="14" text-anchor="middle" class="badge">8 TECHNOLOGIES</text>
+  </g>
+
+  <!-- Skills Pills -->
+  
+    <g transform="translate(25, 56)">
+      <rect x="0" y="0" width="138" height="32" rx="8" fill="#3178c618" stroke="#3178c666" stroke-width="1" />
+      <rect x="6" y="6" width="20" height="20" rx="5" fill="#3178c6" />
+      <text x="16" y="20" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#ffffff">TS</text>
+      <text x="34" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c9d1d9">TypeScript</text>
+    </g>
+
+    <g transform="translate(173, 56)">
+      <rect x="0" y="0" width="93" height="32" rx="8" fill="#61dafb18" stroke="#61dafb66" stroke-width="1" />
+      <rect x="6" y="6" width="20" height="20" rx="5" fill="#61dafb" />
+      <text x="16" y="20" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#000">âš›</text>
+      <text x="34" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#000">React</text>
+    </g>
+
+    <g transform="translate(276, 56)">
+      <rect x="0" y="0" width="111" height="32" rx="8" fill="#ffffff18" stroke="#ffffff66" stroke-width="1" />
+      <rect x="6" y="6" width="20" height="20" rx="5" fill="#ffffff" />
+      <text x="16" y="20" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#000">N</text>
+      <text x="34" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#000">Next.js</text>
+    </g>
+
+    <g transform="translate(25, 98)">
+      <rect x="0" y="0" width="111" height="32" rx="8" fill="#33993318" stroke="#33993366" stroke-width="1" />
+      <rect x="6" y="6" width="20" height="20" rx="5" fill="#339933" />
+      <text x="16" y="20" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#ffffff">NODE</text>
+      <text x="34" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c9d1d9">Node.js</text>
+    </g>
+
+    <g transform="translate(146, 98)">
+      <rect x="0" y="0" width="147" height="32" rx="8" fill="#06b6d418" stroke="#06b6d466" stroke-width="1" />
+      <rect x="6" y="6" width="20" height="20" rx="5" fill="#06b6d4" />
+      <text x="16" y="20" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#ffffff">TW</text>
+      <text x="34" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c9d1d9">TailwindCSS</text>
+    </g>
+
+    <g transform="translate(303, 98)">
+      <rect x="0" y="0" width="102" height="32" rx="8" fill="#2496ed18" stroke="#2496ed66" stroke-width="1" />
+      <rect x="6" y="6" width="20" height="20" rx="5" fill="#2496ed" />
+      <text x="16" y="20" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#ffffff">DK</text>
+      <text x="34" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c9d1d9">Docker</text>
+    </g>
+
+    <g transform="translate(25, 140)">
+      <rect x="0" y="0" width="138" height="32" rx="8" fill="#4169e118" stroke="#4169e166" stroke-width="1" />
+      <rect x="6" y="6" width="20" height="20" rx="5" fill="#4169e1" />
+      <text x="16" y="20" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#ffffff">PG</text>
+      <text x="34" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c9d1d9">PostgreSQL</text>
+    </g>
+
+    <g transform="translate(173, 140)">
+      <rect x="0" y="0" width="102" height="32" rx="8" fill="#3776ab18" stroke="#3776ab66" stroke-width="1" />
+      <rect x="6" y="6" width="20" height="20" rx="5" fill="#3776ab" />
+      <text x="16" y="20" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#ffffff">PY</text>
+      <text x="34" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c9d1d9">Python</text>
+    </g>
+</svg>

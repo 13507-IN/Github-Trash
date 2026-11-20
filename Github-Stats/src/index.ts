@@ -5,6 +5,8 @@ export * from './cards/stats-card.js';
 export * from './cards/languages-card.js';
 export * from './cards/rpg-card.js';
 export * from './cards/worth-card.js';
+export * from './cards/banner-card.js';
+export * from './cards/trophy-card.js';
 export * from './cards/error-card.js';
 export * from './fetcher/github.js';
 export * from './utils/streak-calc.js';

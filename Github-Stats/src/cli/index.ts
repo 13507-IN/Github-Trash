@@ -8,6 +8,8 @@ import { renderStatsCard } from '../cards/stats-card.js';
 import { renderLanguagesCard } from '../cards/languages-card.js';
 import { renderRPGCard } from '../cards/rpg-card.js';
 import { renderWorthCard } from '../cards/worth-card.js';
+import { renderBannerCard } from '../cards/banner-card.js';
+import { renderTrophyCard } from '../cards/trophy-card.js';
 import { calculateRPG } from '../utils/rpg-calc.js';
 import { calculateWorth } from '../utils/worth-calc.js';
 import { CardOptions, StreakData, UserStatsData, LanguagesData } from '../types.js';
@@ -147,6 +149,40 @@ async function main() {
       console.log(`✅ Saved: ${worthPath} (Estimated Worth: ${worthData.currency}${worthData.totalWorth.toLocaleString()}, Tier: ${worthData.tier})`);
     } catch (err: any) {
       console.error('❌ Failed to generate Worth card:', err.message || err);
+    }
+  }
+
+  // 6. Generate Profile Header Banner
+  if (statsData && streakData && langsData) {
+    try {
+      console.log('⏳ Generating Profile Header Banner...');
+      const rpgData = calculateRPG(statsData, streakData, langsData);
+      const worthData = calculateWorth(statsData, streakData, options.currency || '$');
+      const bannerSvg = renderBannerCard({
+        stats: statsData,
+        streak: streakData,
+        languages: langsData,
+        rpg: rpgData,
+        worth: worthData
+      }, options);
+      const bannerPath = path.join(resolvedOutputDir, 'banner.svg');
+      fs.writeFileSync(bannerPath, bannerSvg, 'utf-8');
+      console.log(`✅ Saved: ${bannerPath} (800x220 Animated Header Banner)`);
+    } catch (err: any) {
+      console.error('❌ Failed to generate banner card:', err.message || err);
+    }
+  }
+
+  // 7. Generate Developer Achievements & Trophies Card
+  if (statsData && streakData && langsData) {
+    try {
+      console.log('⏳ Generating Achievements & Trophies Card...');
+      const trophySvg = renderTrophyCard(statsData, streakData, langsData, options);
+      const trophyPath = path.join(resolvedOutputDir, 'trophies.svg');
+      fs.writeFileSync(trophyPath, trophySvg, 'utf-8');
+      console.log(`✅ Saved: ${trophyPath} (4 Trophies Unlocked)`);
+    } catch (err: any) {
+      console.error('❌ Failed to generate trophies card:', err.message || err);
     }
   }
 

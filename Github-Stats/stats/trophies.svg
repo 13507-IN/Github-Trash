@@ -1,0 +1,109 @@
+<svg width="495" height="195" viewBox="0 0 495 195" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: #0d1117; stroke: #30363d; stroke-width: 1px; rx: 10px; }
+    .card-title { font: 700 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; fill: #58a6ff; }
+    .unlocked-pill { font: 700 10px 'JetBrains Mono', monospace; fill: #10b981; }
+    .trophy-name { font: 700 12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; fill: #c9d1d9; text-anchor: middle; }
+    .trophy-tier { font: 800 9px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; text-anchor: middle; letter-spacing: 0.5px; }
+    .trophy-stat { font: 600 10px 'JetBrains Mono', monospace; fill: #8b949e; text-anchor: middle; }
+    
+    @keyframes trophyGlow {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(255,255,255,0.1)); }
+      50% { filter: drop-shadow(0 0 6px rgba(255,255,255,0.3)); }
+    }
+    .trophy-item { animation: trophyGlow 3s infinite ease-in-out; }
+  </style>
+
+  <rect x="0.5" y="0.5" width="494" height="194" class="bg" />
+
+  <!-- Top Title Bar -->
+  <g transform="translate(25, 20)">
+    <text x="0" y="14" class="card-title">🏆 Developer Achievements &amp; Trophies</text>
+    <rect x="330" y="2" width="115" height="18" rx="9" fill="#10b98118" stroke="#10b98144" stroke-width="1" />
+    <text x="387" y="14" text-anchor="middle" class="unlocked-pill">UNLOCKED: 4/4</text>
+  </g>
+
+  <!-- 4 Trophies Column Grid -->
+  <g transform="translate(18, 54)">
+    
+    <!-- Trophy 1 -->
+    <g transform="translate(0, 0)" class="trophy-item">
+      <!-- Outer Card Frame -->
+      <rect x="0" y="0" width="104" height="120" rx="10" fill="rgba(255, 255, 255, 0.02)" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1" />
+      
+      <!-- Medal Embellishment Circle -->
+      <circle cx="52" cy="36" r="22" fill="#f59e0b18" stroke="#f59e0b" stroke-width="1.5" />
+      <text x="52" y="44" text-anchor="middle" font-size="20">🔥</text>
+
+      <!-- Trophy Title -->
+      <text x="52" y="74" class="trophy-name">Streak Titan</text>
+
+      <!-- Tier Badge -->
+      <rect x="22" y="82" width="60" height="15" rx="4" fill="#f59e0b25" stroke="#f59e0b" stroke-width="0.75" />
+      <text x="52" y="93" fill="#f59e0b" class="trophy-tier">GOLD</text>
+
+      <!-- Stat Value -->
+      <text x="52" y="110" class="trophy-stat">44 Days</text>
+    </g>
+
+    <!-- Trophy 2 -->
+    <g transform="translate(114, 0)" class="trophy-item">
+      <!-- Outer Card Frame -->
+      <rect x="0" y="0" width="104" height="120" rx="10" fill="rgba(255, 255, 255, 0.02)" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1" />
+      
+      <!-- Medal Embellishment Circle -->
+      <circle cx="52" cy="36" r="22" fill="#f59e0b18" stroke="#f59e0b" stroke-width="1.5" />
+      <text x="52" y="44" text-anchor="middle" font-size="20">⚡</text>
+
+      <!-- Trophy Title -->
+      <text x="52" y="74" class="trophy-name">Code Engine</text>
+
+      <!-- Tier Badge -->
+      <rect x="22" y="82" width="60" height="15" rx="4" fill="#f59e0b25" stroke="#f59e0b" stroke-width="0.75" />
+      <text x="52" y="93" fill="#f59e0b" class="trophy-tier">GOLD</text>
+
+      <!-- Stat Value -->
+      <text x="52" y="110" class="trophy-stat">1,580</text>
+    </g>
+
+    <!-- Trophy 3 -->
+    <g transform="translate(228, 0)" class="trophy-item">
+      <!-- Outer Card Frame -->
+      <rect x="0" y="0" width="104" height="120" rx="10" fill="rgba(255, 255, 255, 0.02)" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1" />
+      
+      <!-- Medal Embellishment Circle -->
+      <circle cx="52" cy="36" r="22" fill="#94a3b818" stroke="#94a3b8" stroke-width="1.5" />
+      <text x="52" y="44" text-anchor="middle" font-size="20">⭐</text>
+
+      <!-- Trophy Title -->
+      <text x="52" y="74" class="trophy-name">Star Collector</text>
+
+      <!-- Tier Badge -->
+      <rect x="22" y="82" width="60" height="15" rx="4" fill="#94a3b825" stroke="#94a3b8" stroke-width="0.75" />
+      <text x="52" y="93" fill="#94a3b8" class="trophy-tier">SILVER</text>
+
+      <!-- Stat Value -->
+      <text x="52" y="110" class="trophy-stat">13 Stars</text>
+    </g>
+
+    <!-- Trophy 4 -->
+    <g transform="translate(342, 0)" class="trophy-item">
+      <!-- Outer Card Frame -->
+      <rect x="0" y="0" width="104" height="120" rx="10" fill="rgba(255, 255, 255, 0.02)" stroke="rgba(255, 255, 255, 0.06)" stroke-width="1" />
+      
+      <!-- Medal Embellishment Circle -->
+      <circle cx="52" cy="36" r="22" fill="#f59e0b18" stroke="#f59e0b" stroke-width="1.5" />
+      <text x="52" y="44" text-anchor="middle" font-size="20">💻</text>
+
+      <!-- Trophy Title -->
+      <text x="52" y="74" class="trophy-name">Multi-Stack</text>
+
+      <!-- Tier Badge -->
+      <rect x="22" y="82" width="60" height="15" rx="4" fill="#f59e0b25" stroke="#f59e0b" stroke-width="0.75" />
+      <text x="52" y="93" fill="#f59e0b" class="trophy-tier">GOLD</text>
+
+      <!-- Stat Value -->
+      <text x="52" y="110" class="trophy-stat">6 Langs</text>
+    </g>
+  </g>
+</svg>

@@ -6,6 +6,8 @@ import { renderStatsCard } from './cards/stats-card.js';
 import { renderLanguagesCard } from './cards/languages-card.js';
 import { renderRPGCard } from './cards/rpg-card.js';
 import { renderWorthCard } from './cards/worth-card.js';
+import { renderBannerCard } from './cards/banner-card.js';
+import { renderTrophyCard } from './cards/trophy-card.js';
 import { renderErrorCard } from './cards/error-card.js';
 import { calculateRPG } from './utils/rpg-calc.js';
 import { calculateWorth } from './utils/worth-calc.js';
@@ -214,6 +216,81 @@ app.get('/api/worth', async (req: Request, res: Response) => {
 });
 
 /**
+ * GET /api/banner - Dynamic Animated Profile Header Banner
+ */
+app.get('/api/banner', async (req: Request, res: Response) => {
+  const options = parseCardOptions(req);
+  if (!options.username) {
+    sendSvg(res, renderErrorCard('Username parameter is required', 'Add ?username=YOUR_GITHUB_USERNAME'));
+    return;
+  }
+
+  const cacheKey = `banner:${options.username}:${options.timezone}:${options.graceDays}:${options.theme}:${options.hideBorder}:${options.borderRadius}`;
+
+  try {
+    const svg = await getOrSetCache(
+      cacheKey,
+      async () => {
+        const [statsData, streakData, langsData] = await Promise.all([
+          fetchUserStatsData(options.username),
+          fetchStreakData(options.username, options.timezone, options.graceDays),
+          fetchLanguagesData(options.username)
+        ]);
+        const rpgData = calculateRPG(statsData, streakData, langsData);
+        const worthData = calculateWorth(statsData, streakData, options.currency || '$');
+        return renderBannerCard({
+          stats: statsData,
+          streak: streakData,
+          languages: langsData,
+          rpg: rpgData,
+          worth: worthData
+        }, options);
+      },
+      1000 * 60 * 60 * 2
+    );
+    sendSvg(res, svg);
+  } catch (err: any) {
+    console.error('Banner API error:', err);
+    sendSvg(res, renderErrorCard('Could not load banner', err.message || 'Please check username or token'));
+  }
+});
+
+/**
+ * GET /api/trophies / /api/trophy - Developer Achievements & Medals
+ */
+const trophyHandler = async (req: Request, res: Response) => {
+  const options = parseCardOptions(req);
+  if (!options.username) {
+    sendSvg(res, renderErrorCard('Username parameter is required', 'Add ?username=YOUR_GITHUB_USERNAME'));
+    return;
+  }
+
+  const cacheKey = `trophies:${options.username}:${options.timezone}:${options.graceDays}:${options.theme}:${options.hideBorder}:${options.borderRadius}`;
+
+  try {
+    const svg = await getOrSetCache(
+      cacheKey,
+      async () => {
+        const [statsData, streakData, langsData] = await Promise.all([
+          fetchUserStatsData(options.username),
+          fetchStreakData(options.username, options.timezone, options.graceDays),
+          fetchLanguagesData(options.username)
+        ]);
+        return renderTrophyCard(statsData, streakData, langsData, options);
+      },
+      1000 * 60 * 60 * 2
+    );
+    sendSvg(res, svg);
+  } catch (err: any) {
+    console.error('Trophies API error:', err);
+    sendSvg(res, renderErrorCard('Could not load trophies', err.message || 'Please check username or token'));
+  }
+};
+
+app.get('/api/trophies', trophyHandler);
+app.get('/api/trophy', trophyHandler);
+
+/**
  * Interactive Preview Playground UI
  */
 app.get('/', (req: Request, res: Response) => {
@@ -225,7 +302,7 @@ app.get('/', (req: Request, res: Response) => {
 if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log(`⚡ GitHub Stats Server running at: http://localhost:${PORT}`);
-    console.log(`📊 Endpoints: /api/streak, /api/stats, /api/languages, /api/rpg, /api/worth`);
+    console.log(`📊 Endpoints: /api/streak, /api/stats, /api/languages, /api/rpg, /api/worth, /api/banner, /api/trophies`);
     console.log(`🎨 Web Playground: http://localhost:${PORT}`);
   });
 }

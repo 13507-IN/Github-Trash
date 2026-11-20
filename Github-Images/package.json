@@ -1,0 +1,31 @@
+{
+  "name": "github-images-generator",
+  "version": "1.0.0",
+  "description": "Dynamic SVG tech stack badges, animated waves, and section dividers for GitHub Profile READMEs.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "github-images": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "generate": "tsx src/cli.ts"
+  },
+  "keywords": [
+    "github-profile",
+    "readme",
+    "badges",
+    "tech-stack",
+    "svg",
+    "developer-portfolio"
+  ],
+  "author": "13507-IN",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}

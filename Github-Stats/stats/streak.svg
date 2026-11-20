@@ -48,7 +48,7 @@
 
     <!-- Label & Range -->
     <text x="0" y="130" class="label-current">Current Streak</text>
-    <text x="0" y="152" class="subtext">Oct 23 - Nov 19</text>
+    <text x="0" y="152" class="subtext">Oct 23 - Nov 19 (Pending today)</text>
   </g>
 
   <!-- Vertical Divider 2 -->

@@ -26,14 +26,14 @@
     <text x="29" y="15" text-anchor="middle" class="lvl-badge">LVL 22</text>
 
     <!-- Class Name & Subtitle -->
-    <text x="70" y="16" class="class-title">TypeScript Spellblade</text>
+    <text x="70" y="16" class="class-title">Async Warlock</text>
     <text x="70" y="32" class="sub-title">Battle-Tested Developer</text>
 
     <!-- XP Bar -->
     <g transform="translate(0, 42)">
       <rect x="0" y="0" width="445" height="5" rx="2.5" fill="#21262d" />
-      <rect x="0" y="0" width="8.9" height="5" rx="2.5" fill="#58a6ff" />
-      <text x="445" y="-5" class="xp-text">XP 2%</text>
+      <rect x="0" y="0" width="120.15" height="5" rx="2.5" fill="#58a6ff" />
+      <text x="445" y="-5" class="xp-text">XP 27%</text>
     </g>
   </g>
 
@@ -42,10 +42,10 @@
     
       <g transform="translate(0, 0)">
         <text x="0" y="0" class="stat-label" fill="#f85149">STR</text>
-        <text x="80" y="0" class="stat-val">91</text>
+        <text x="80" y="0" class="stat-val">87</text>
         <!-- Mini Bar -->
         <rect x="0" y="7" width="80" height="4" rx="2" fill="#21262d" />
-        <rect x="0" y="7" width="73.53535353535354" height="4" rx="2" fill="#f85149" />
+        <rect x="0" y="7" width="70.3030303030303" height="4" rx="2" fill="#f85149" />
       </g>
       <g transform="translate(90, 0)">
         <text x="0" y="0" class="stat-label" fill="#58a6ff">INT</text>
@@ -56,17 +56,17 @@
       </g>
       <g transform="translate(180, 0)">
         <text x="0" y="0" class="stat-label" fill="#e3b341">DEX</text>
-        <text x="80" y="0" class="stat-val">46</text>
+        <text x="80" y="0" class="stat-val">99</text>
         <!-- Mini Bar -->
         <rect x="0" y="7" width="80" height="4" rx="2" fill="#21262d" />
-        <rect x="0" y="7" width="37.17171717171717" height="4" rx="2" fill="#e3b341" />
+        <rect x="0" y="7" width="80" height="4" rx="2" fill="#e3b341" />
       </g>
       <g transform="translate(270, 0)">
         <text x="0" y="0" class="stat-label" fill="#bc8cff">CHA</text>
-        <text x="80" y="0" class="stat-val">95</text>
+        <text x="80" y="0" class="stat-val">76</text>
         <!-- Mini Bar -->
         <rect x="0" y="7" width="80" height="4" rx="2" fill="#21262d" />
-        <rect x="0" y="7" width="76.76767676767676" height="4" rx="2" fill="#bc8cff" />
+        <rect x="0" y="7" width="61.41414141414141" height="4" rx="2" fill="#bc8cff" />
       </g>
       <g transform="translate(360, 0)">
         <text x="0" y="0" class="stat-label" fill="#39d353">STA</text>
@@ -84,7 +84,7 @@
   <g transform="translate(25, 148)">
     <g transform="translate(0, 0)">
       <text x="0" y="0" class="sub-title">EQUIPPED WEAPON:</text>
-      <text x="120" y="0" class="weapon-text">⚔️ Staff of Strict Types</text>
+      <text x="120" y="0" class="weapon-text">⚔️ Event-Loop Scythe</text>
     </g>
     <g transform="translate(0, 22)">
       <text x="0" y="0" class="sub-title">ACTIVE PERK:</text>

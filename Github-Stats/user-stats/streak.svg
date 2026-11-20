@@ -23,9 +23,9 @@
 
   <!-- Left Column: Total Contributions -->
   <g transform="translate(100, 0)">
-    <text x="0" y="74" class="num-large">1,576</text>
+    <text x="0" y="74" class="num-large">1,645</text>
     <text x="0" y="106" class="label">Total Contributions</text>
-    <text x="0" y="128" class="subtext">Nov 17, 2025 - Present</text>
+    <text x="0" y="128" class="subtext">Jun 20, 2024 - Present</text>
   </g>
 
   <!-- Vertical Divider 1 -->
@@ -41,14 +41,14 @@
     <!-- Ring Background -->
     <circle cx="0" cy="74" r="36" class="ring-bg" />
     <!-- Ring Progress -->
-    <circle cx="0" cy="74" r="36" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="87.39545454545454" />
+    <circle cx="0" cy="74" r="36" class="ring-progress" stroke-dasharray="226.2" stroke-dashoffset="82.25454545454545" />
 
     <!-- Current Streak Number Inside Ring -->
-    <text x="0" y="75" class="num-current">27</text>
+    <text x="0" y="75" class="num-current">28</text>
 
     <!-- Label & Range -->
     <text x="0" y="130" class="label-current">Current Streak</text>
-    <text x="0" y="152" class="subtext">Oct 23 - Nov 19 (Pending today)</text>
+    <text x="0" y="152" class="subtext">Oct 23 - Nov 20</text>
   </g>
 
   <!-- Vertical Divider 2 -->

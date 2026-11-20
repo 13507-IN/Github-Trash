@@ -39,15 +39,15 @@ export function calculateWorth(
   const totalWorth = Math.round((baseTotal * multiplier) / 50) * 50;
 
   // 3. Market Valuation Tier
-  let tier = '🌱 Fast-Growing Builder';
+  let tier = '\u{1F331} Fast-Growing Builder';
   if (totalWorth >= 150000) {
-    tier = '💎 Mythic Unicorn / Enterprise Legend';
+    tier = '\u{1F48E} Mythic Unicorn / Enterprise Legend';
   } else if (totalWorth >= 75000) {
-    tier = '🚀 Principal / Staff Architect';
+    tier = '\u{1F680} Principal / Staff Architect';
   } else if (totalWorth >= 35000) {
-    tier = '⭐ Senior Production Engineer';
+    tier = '\u{2B50} Senior Production Engineer';
   } else if (totalWorth >= 15000) {
-    tier = '🔥 High-Velocity Contributor';
+    tier = '\u{1F525} High-Velocity Contributor';
   }
 
   return {

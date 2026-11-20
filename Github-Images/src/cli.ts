@@ -35,21 +35,21 @@ async function main() {
   }
 
   const techKeys = config.stack.split(',').map(s => s.trim()).filter(Boolean);
-  console.log(`ðŸŽ¨ Generating Tech Stack Grid for: ${techKeys.join(', ')}`);
+  console.log(`🎨 Generating Tech Stack Grid for: ${techKeys.join(', ')}`);
 
   const stackSvg = renderStackGridSvg(techKeys, { title: config.title });
   const stackPath = path.join(resolvedDir, 'tech-stack.svg');
   fs.writeFileSync(stackPath, stackSvg, 'utf-8');
-  console.log(`âœ… Saved: ${stackPath}`);
+  console.log(`✅ Saved: ${stackPath}`);
 
   if (config.divider) {
     const waveSvg = renderDividerSvg({ type: 'wave' });
     const wavePath = path.join(resolvedDir, 'wave-divider.svg');
     fs.writeFileSync(wavePath, waveSvg, 'utf-8');
-    console.log(`âœ… Saved: ${wavePath}`);
+    console.log(`✅ Saved: ${wavePath}`);
   }
 
-  console.log('ðŸŽ‰ GitHub Images generation complete!');
+  console.log('🎉 GitHub Images generation complete!');
 }
 
 main().catch(console.error);

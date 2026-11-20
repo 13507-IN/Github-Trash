@@ -71,8 +71,8 @@ export function renderWorthCard(data: WorthData, options: CardOptions): string {
     </g>
 
     <g transform="translate(12, 54)">
-      <text x="0" y="0" class="breakdown-label">Consistency Multiplier:</text>
-      <text x="180" y="0" class="breakdown-val" fill="#388bfd">${data.breakdown.multiplier}x (Streak Bonus)</text>
+      <text x="0" y="0" class="breakdown-label">Streak Multiplier:</text>
+      <text x="180" y="0" class="breakdown-val" fill="#388bfd">${data.breakdown.multiplier}x Bonus</text>
     </g>
   </g>
 

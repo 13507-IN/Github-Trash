@@ -89,7 +89,7 @@ export function renderRPGCard(data: RPGData, options: CardOptions): string {
   <g transform="translate(25, 148)">
     <g transform="translate(0, 0)">
       <text x="0" y="0" class="sub-title">EQUIPPED WEAPON:</text>
-      <text x="120" y="0" class="weapon-text">⚔️ ${escapeXml(data.weapon)}</text>
+      <text x="120" y="0" class="weapon-text">&#x2694;&#xFE0F; ${escapeXml(data.weapon)}</text>
     </g>
     <g transform="translate(0, 22)">
       <text x="0" y="0" class="sub-title">ACTIVE PERK:</text>

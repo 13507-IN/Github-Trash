@@ -8,8 +8,8 @@ export function renderPlaygroundHtml(): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitHub Experience Suite â€¢ Next-Gen Profile Engine</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>âš¡</text></svg>">
+  <title>GitHub Experience Suite &bull; Next-Gen Profile Engine</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%E2%9A%A1</text></svg>">
   
   <!-- Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -711,7 +711,7 @@ export function renderPlaygroundHtml(): string {
   <!-- Sticky Modern Navbar -->
   <nav class="navbar">
     <a href="#" class="nav-brand">
-      <div class="nav-brand-icon">âš¡</div>
+      <div class="nav-brand-icon">&#x26A1;</div>
       <span>GitHub Experience Suite</span>
     </a>
     <div class="nav-actions">
@@ -737,7 +737,7 @@ export function renderPlaygroundHtml(): string {
     <header>
       <div class="badge-pill">
         <span class="badge-dot"></span>
-        v2.5 â€¢ Full Suite: Stats, Banners, RPG &amp; Trophies
+        v2.5 &bull; Full Suite: Stats, Banners, RPG &amp; Trophies
       </div>
       <h1>Turn Your Code Into Legend.</h1>
       <p class="subtitle">Next-gen dynamic profile header banners, timezone-accurate streaks, gamified RPG sheets, unlocked trophies, and verified account net-worth cards.</p>
@@ -747,9 +747,9 @@ export function renderPlaygroundHtml(): string {
     <div class="studio-panel">
       <div class="panel-header">
         <div class="panel-title">
-          <span>âš™ï¸ </span> Interactive Studio Console
+          <span>&#x2699;</span> Interactive Studio Console
         </div>
-        <button class="preset-chip" onclick="detectUserTimezone()">ðŸ“  Detect My Timezone</button>
+        <button class="preset-chip" onclick="detectUserTimezone()">&#x1F4CD; Detect My Timezone</button>
       </div>
 
       <div class="grid-form">
@@ -849,17 +849,17 @@ export function renderPlaygroundHtml(): string {
       <div class="card-frame" style="padding: 20px;">
         <div class="card-glare"></div>
         <div class="card-meta">
-          <span class="card-meta-title">ðŸ–¼ï¸  Dynamic Animated Profile Header Banner (800x220)</span>
-          <span class="badge-live">â—  Vector Animated</span>
+          <span class="card-meta-title">&#x1F5BC; Dynamic Animated Profile Header Banner (800x220)</span>
+          <span class="badge-live">ANIMATED</span>
         </div>
         <div class="card-img-container" style="min-height: 220px; background: rgba(0,0,0,0.4);">
           <img id="card-banner" src="/api/banner?username=13507-IN&theme=github-dark&grace_days=1&border_radius=16" alt="Profile Banner">
         </div>
         <div class="card-actions-bar">
-          <button class="card-tool-btn card-tool-btn-primary" onclick="downloadSvg('card-banner', 'banner.svg')">â¬‡ Download SVG</button>
-          <button class="card-tool-btn" onclick="exportPng('card-banner', 'banner.png', 800, 220)">ðŸ–¼ Export PNG @2x</button>
-          <button class="card-tool-btn" onclick="copyCardUrl('card-banner')">ðŸ”— Copy URL</button>
-          <button class="card-tool-btn" onclick="copyCardMarkdown('banner', 'card-banner')">ðŸ“‹ Copy Markdown</button>
+          <button class="card-tool-btn card-tool-btn-primary" onclick="downloadSvg('card-banner', 'banner.svg')">&#x2193; Download SVG</button>
+          <button class="card-tool-btn" onclick="exportPng('card-banner', 'banner.png', 800, 220)">&#x1F5BC; Export PNG @2x</button>
+          <button class="card-tool-btn" onclick="copyCardUrl('card-banner')">&#x1F517; Copy URL</button>
+          <button class="card-tool-btn" onclick="copyCardMarkdown('banner', 'card-banner')">&#x1F4CB; Copy Markdown</button>
         </div>
       </div>
     </div>
@@ -872,17 +872,17 @@ export function renderPlaygroundHtml(): string {
         <div class="card-frame">
           <div class="card-glare"></div>
           <div class="card-meta">
-            <span class="card-meta-title">âš”ï¸  RPG Developer Character Sheet</span>
-            <span class="badge-live">â—  Gamified</span>
+            <span class="card-meta-title">&#x2694; RPG Developer Character Sheet</span>
+            <span class="badge-live">GAMIFIED</span>
           </div>
           <div class="card-img-container">
             <img id="card-rpg" src="/api/rpg?username=13507-IN&theme=github-dark&grace_days=1" alt="RPG Card">
           </div>
           <div class="card-actions-bar">
-            <button class="card-tool-btn" onclick="downloadSvg('card-rpg', 'rpg.svg')">â¬‡ SVG</button>
-            <button class="card-tool-btn" onclick="exportPng('card-rpg', 'rpg.png', 495, 195)">ðŸ–¼ PNG @2x</button>
-            <button class="card-tool-btn" onclick="copyCardUrl('card-rpg')">ðŸ”— URL</button>
-            <button class="card-tool-btn" onclick="copyCardMarkdown('rpg', 'card-rpg')">ðŸ“‹ Markdown</button>
+            <button class="card-tool-btn" onclick="downloadSvg('card-rpg', 'rpg.svg')">&#x2193; SVG</button>
+            <button class="card-tool-btn" onclick="exportPng('card-rpg', 'rpg.png', 495, 195)">&#x1F5BC; PNG @2x</button>
+            <button class="card-tool-btn" onclick="copyCardUrl('card-rpg')">&#x1F517; URL</button>
+            <button class="card-tool-btn" onclick="copyCardMarkdown('rpg', 'card-rpg')">&#x1F4CB; Markdown</button>
           </div>
         </div>
       </div>
@@ -892,17 +892,17 @@ export function renderPlaygroundHtml(): string {
         <div class="card-frame">
           <div class="card-glare"></div>
           <div class="card-meta">
-            <span class="card-meta-title">ðŸ’° Account Net Worth / Valuation</span>
-            <span class="badge-live">â—  Fintech</span>
+            <span class="card-meta-title">&#x1F4B0; Account Net Worth &amp; Valuation</span>
+            <span class="badge-live">FINTECH</span>
           </div>
           <div class="card-img-container">
             <img id="card-worth" src="/api/worth?username=13507-IN&theme=github-dark&grace_days=1" alt="Worth Card">
           </div>
           <div class="card-actions-bar">
-            <button class="card-tool-btn" onclick="downloadSvg('card-worth', 'worth.svg')">â¬‡ SVG</button>
-            <button class="card-tool-btn" onclick="exportPng('card-worth', 'worth.png', 495, 195)">ðŸ–¼ PNG @2x</button>
-            <button class="card-tool-btn" onclick="copyCardUrl('card-worth')">ðŸ”— URL</button>
-            <button class="card-tool-btn" onclick="copyCardMarkdown('worth', 'card-worth')">ðŸ“‹ Markdown</button>
+            <button class="card-tool-btn" onclick="downloadSvg('card-worth', 'worth.svg')">&#x2193; SVG</button>
+            <button class="card-tool-btn" onclick="exportPng('card-worth', 'worth.png', 495, 195)">&#x1F5BC; PNG @2x</button>
+            <button class="card-tool-btn" onclick="copyCardUrl('card-worth')">&#x1F517; URL</button>
+            <button class="card-tool-btn" onclick="copyCardMarkdown('worth', 'card-worth')">&#x1F4CB; Markdown</button>
           </div>
         </div>
       </div>
@@ -912,17 +912,17 @@ export function renderPlaygroundHtml(): string {
         <div class="card-frame">
           <div class="card-glare"></div>
           <div class="card-meta">
-            <span class="card-meta-title">ðŸ † Developer Achievements &amp; Trophies</span>
-            <span class="badge-live">â—  Unlocked</span>
+            <span class="card-meta-title">&#x1F3C6; Developer Achievements &amp; Trophies</span>
+            <span class="badge-live">UNLOCKED</span>
           </div>
           <div class="card-img-container">
             <img id="card-trophies" src="/api/trophies?username=13507-IN&theme=github-dark&grace_days=1" alt="Trophies Card">
           </div>
           <div class="card-actions-bar">
-            <button class="card-tool-btn" onclick="downloadSvg('card-trophies', 'trophies.svg')">â¬‡ SVG</button>
-            <button class="card-tool-btn" onclick="exportPng('card-trophies', 'trophies.png', 495, 195)">ðŸ–¼ PNG @2x</button>
-            <button class="card-tool-btn" onclick="copyCardUrl('card-trophies')">ðŸ”— URL</button>
-            <button class="card-tool-btn" onclick="copyCardMarkdown('trophies', 'card-trophies')">ðŸ“‹ Markdown</button>
+            <button class="card-tool-btn" onclick="downloadSvg('card-trophies', 'trophies.svg')">&#x2193; SVG</button>
+            <button class="card-tool-btn" onclick="exportPng('card-trophies', 'trophies.png', 495, 195)">&#x1F5BC; PNG @2x</button>
+            <button class="card-tool-btn" onclick="copyCardUrl('card-trophies')">&#x1F517; URL</button>
+            <button class="card-tool-btn" onclick="copyCardMarkdown('trophies', 'card-trophies')">&#x1F4CB; Markdown</button>
           </div>
         </div>
       </div>
@@ -932,17 +932,17 @@ export function renderPlaygroundHtml(): string {
         <div class="card-frame">
           <div class="card-glare"></div>
           <div class="card-meta">
-            <span class="card-meta-title">ðŸ”¥ Contribution Streak (Grace Day Aware)</span>
-            <span class="badge-live">â—  Accurate</span>
+            <span class="card-meta-title">&#x1F525; Contribution Streak (Grace-Day Protected)</span>
+            <span class="badge-live">ACCURATE</span>
           </div>
           <div class="card-img-container">
             <img id="card-streak" src="/api/streak?username=13507-IN&theme=github-dark&grace_days=1" alt="Streak Card">
           </div>
           <div class="card-actions-bar">
-            <button class="card-tool-btn" onclick="downloadSvg('card-streak', 'streak.svg')">â¬‡ SVG</button>
-            <button class="card-tool-btn" onclick="exportPng('card-streak', 'streak.png', 495, 195)">ðŸ–¼ PNG @2x</button>
-            <button class="card-tool-btn" onclick="copyCardUrl('card-streak')">ðŸ”— URL</button>
-            <button class="card-tool-btn" onclick="copyCardMarkdown('streak', 'card-streak')">ðŸ“‹ Markdown</button>
+            <button class="card-tool-btn" onclick="downloadSvg('card-streak', 'streak.svg')">&#x2193; SVG</button>
+            <button class="card-tool-btn" onclick="exportPng('card-streak', 'streak.png', 495, 195)">&#x1F5BC; PNG @2x</button>
+            <button class="card-tool-btn" onclick="copyCardUrl('card-streak')">&#x1F517; URL</button>
+            <button class="card-tool-btn" onclick="copyCardMarkdown('streak', 'card-streak')">&#x1F4CB; Markdown</button>
           </div>
         </div>
       </div>
@@ -952,17 +952,17 @@ export function renderPlaygroundHtml(): string {
         <div class="card-frame">
           <div class="card-glare"></div>
           <div class="card-meta">
-            <span class="card-meta-title">ðŸ“Š General Developer Stats &amp; Rank</span>
-            <span class="badge-live">â—  Ranked S+</span>
+            <span class="card-meta-title">&#x1F4CA; General Developer Stats &amp; Rank</span>
+            <span class="badge-live">RANKED S+</span>
           </div>
           <div class="card-img-container">
             <img id="card-stats" src="/api/stats?username=13507-IN&theme=github-dark" alt="Stats Card">
           </div>
           <div class="card-actions-bar">
-            <button class="card-tool-btn" onclick="downloadSvg('card-stats', 'stats.svg')">â¬‡ SVG</button>
-            <button class="card-tool-btn" onclick="exportPng('card-stats', 'stats.png', 495, 195)">ðŸ–¼ PNG @2x</button>
-            <button class="card-tool-btn" onclick="copyCardUrl('card-stats')">ðŸ”— URL</button>
-            <button class="card-tool-btn" onclick="copyCardMarkdown('stats', 'card-stats')">ðŸ“‹ Markdown</button>
+            <button class="card-tool-btn" onclick="downloadSvg('card-stats', 'stats.svg')">&#x2193; SVG</button>
+            <button class="card-tool-btn" onclick="exportPng('card-stats', 'stats.png', 495, 195)">&#x1F5BC; PNG @2x</button>
+            <button class="card-tool-btn" onclick="copyCardUrl('card-stats')">&#x1F517; URL</button>
+            <button class="card-tool-btn" onclick="copyCardMarkdown('stats', 'card-stats')">&#x1F4CB; Markdown</button>
           </div>
         </div>
       </div>
@@ -972,17 +972,17 @@ export function renderPlaygroundHtml(): string {
         <div class="card-frame">
           <div class="card-glare"></div>
           <div class="card-meta">
-            <span class="card-meta-title">ðŸ’» Top Programming Languages</span>
-            <span class="badge-live">â—  Segmented</span>
+            <span class="card-meta-title">&#x1F4BB; Top Programming Languages</span>
+            <span class="badge-live">SEGMENTED</span>
           </div>
           <div class="card-img-container">
             <img id="card-languages" src="/api/languages?username=13507-IN&theme=github-dark" alt="Languages Card">
           </div>
           <div class="card-actions-bar">
-            <button class="card-tool-btn" onclick="downloadSvg('card-languages', 'languages.svg')">â¬‡ SVG</button>
-            <button class="card-tool-btn" onclick="exportPng('card-languages', 'languages.png', 495, 195)">ðŸ–¼ PNG @2x</button>
-            <button class="card-tool-btn" onclick="copyCardUrl('card-languages')">ðŸ”— URL</button>
-            <button class="card-tool-btn" onclick="copyCardMarkdown('languages', 'card-languages')">ðŸ“‹ Markdown</button>
+            <button class="card-tool-btn" onclick="downloadSvg('card-languages', 'languages.svg')">&#x2193; SVG</button>
+            <button class="card-tool-btn" onclick="exportPng('card-languages', 'languages.png', 495, 195)">&#x1F5BC; PNG @2x</button>
+            <button class="card-tool-btn" onclick="copyCardUrl('card-languages')">&#x1F517; URL</button>
+            <button class="card-tool-btn" onclick="copyCardMarkdown('languages', 'card-languages')">&#x1F4CB; Markdown</button>
           </div>
         </div>
       </div>
@@ -993,7 +993,7 @@ export function renderPlaygroundHtml(): string {
     <div class="export-box">
       <div class="export-header">
         <h2 style="font-size: 1.35rem; font-weight: 800; display: flex; align-items: center; gap: 10px;">
-          <span>ðŸ“¦</span> Ready-to-Paste Profile Embeds
+          <span>&#x1F4E6;</span> Ready-to-Paste Profile Embeds
         </h2>
         <div class="tab-pills">
           <button class="tab-pill-btn active" onclick="switchExportTab('picture', this)">Dual-Theme &lt;picture&gt;</button>
@@ -1004,19 +1004,19 @@ export function renderPlaygroundHtml(): string {
 
       <!-- Tab 1: Dual Theme Picture tag -->
       <div id="export-picture" class="code-wrapper">
-        <button class="copy-button" onclick="copyCodeFromPre('picture-code', this)">ðŸ“‹ Copy Dual-Theme Code</button>
+        <button class="copy-button" onclick="copyCodeFromPre('picture-code', this)">&#x1F4CB; Copy Dual-Theme Code</button>
         <pre id="picture-code"></pre>
       </div>
 
       <!-- Tab 2: Standard Markdown -->
       <div id="export-markdown" class="code-wrapper" style="display: none;">
-        <button class="copy-button" onclick="copyCodeFromPre('markdown-code', this)">ðŸ“‹ Copy Markdown</button>
+        <button class="copy-button" onclick="copyCodeFromPre('markdown-code', this)">&#x1F4CB; Copy Markdown</button>
         <pre id="markdown-code"></pre>
       </div>
 
       <!-- Tab 3: GitHub Action YAML -->
       <div id="export-action" class="code-wrapper" style="display: none;">
-        <button class="copy-button" onclick="copyCodeFromPre('action-yaml-code', this)">ðŸ“‹ Copy Workflow YAML</button>
+        <button class="copy-button" onclick="copyCodeFromPre('action-yaml-code', this)">&#x1F4CB; Copy Workflow YAML</button>
         <pre id="action-yaml-code">name: Update GitHub Stats &amp; RPG Cards
 
 on:
@@ -1442,7 +1442,7 @@ jobs:
       fetch(img.src)
         .then(r => r.text())
         .then(svgText => {
-          const blob = new Blob([svgText], { type: 'image/svg+xml' });
+          const blob = new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' });
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
@@ -1522,7 +1522,7 @@ jobs:
         triggerConfetti();
         playSuccessFanfare();
         const orig = btn.innerHTML;
-        btn.innerHTML = 'âœ… Copied!';
+        btn.innerHTML = '&#x2705; Copied!';
         setTimeout(() => { btn.innerHTML = orig; }, 2000);
       });
     }

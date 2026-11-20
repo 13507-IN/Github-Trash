@@ -13,7 +13,7 @@ export const TECH_LIBRARY: Record<string, TechSkill> = {
   go: { name: 'Go', category: 'Languages', color: '#00add8', icon: 'GO' },
   rust: { name: 'Rust', category: 'Languages', color: '#dea584', icon: 'RS' },
   cpp: { name: 'C++', category: 'Languages', color: '#00599c', icon: 'C++' },
-  react: { name: 'React', category: 'Frontend', color: '#61dafb', textColor: '#000', icon: 'âš›' },
+  react: { name: 'React', category: 'Frontend', color: '#61dafb', textColor: '#000', icon: 'RCT' },
   nextjs: { name: 'Next.js', category: 'Frontend', color: '#ffffff', textColor: '#000', icon: 'N' },
   vue: { name: 'Vue.js', category: 'Frontend', color: '#4fc08d', icon: 'V' },
   tailwind: { name: 'TailwindCSS', category: 'Frontend', color: '#06b6d4', icon: 'TW' },

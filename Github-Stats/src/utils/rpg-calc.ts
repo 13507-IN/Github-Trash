@@ -93,15 +93,15 @@ export function calculateRPG(
   const sta = clamp(20 + streak.currentStreak * 2 + streak.longestStreak * 0.8);
 
   // 5. Passive Perk
-  let passivePerk = '🛡️ Guardian of Commits (+10% resilience)';
+  let passivePerk = '\u{1F6E1}\u{FE0F} Guardian of Commits (+10% resilience)';
   if (streak.currentStreak >= 20 || streak.longestStreak >= 30) {
-    passivePerk = '🔥 Unyielding Flame (Immune to burnout & streak resets)';
+    passivePerk = '\u{1F525} Unyielding Flame (Immune to burnout & streak resets)';
   } else if (langs.languages.length >= 4) {
-    passivePerk = '🔮 Polyglot Aura (+25% speed learning new frameworks)';
+    passivePerk = '\u{1F52E} Polyglot Aura (+25% speed learning new frameworks)';
   } else if (stats.totalStars >= 50) {
-    passivePerk = '👑 Open-Source Royalty (+30% community reverence)';
+    passivePerk = '\u{1F451} Open-Source Royalty (+30% community reverence)';
   } else if (stats.totalCommits >= 1000) {
-    passivePerk = '⚡ Endless Mana (Generates high-velocity code)';
+    passivePerk = '\u{26A1} Endless Mana (Generates high-velocity code)';
   }
 
   return {

@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 3000;
 
 // Helper to set image headers with edge caching
 function sendSvg(res: Response, svg: string, cacheTtlSeconds: number = 14400) {
-  res.setHeader('Content-Type', 'image/svg+xml');
+  res.setHeader('Content-Type', 'image/svg+xml; charset=utf-8');
   res.setHeader(
     'Cache-Control',
     `public, max-age=${cacheTtlSeconds}, s-maxage=${cacheTtlSeconds}, stale-while-revalidate=86400`
@@ -294,7 +294,7 @@ app.get('/api/trophy', trophyHandler);
  * Interactive Preview Playground UI
  */
 app.get('/', (req: Request, res: Response) => {
-  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.send(renderPlaygroundHtml());
 });
 

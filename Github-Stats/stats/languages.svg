@@ -21,7 +21,7 @@
     </mask>
     <rect x="0" y="0" width="435" height="8" rx="4" fill="#21262d" />
     <g mask="url(#bar-mask)">
-      <rect x="0" y="0" width="184.875" height="8" fill="#f1e05a" /><rect x="184.875" y="0" width="141.375" height="8" fill="#3178c6" /><rect x="326.25" y="0" width="40.019999999999996" height="8" fill="#e34c26" /><rect x="366.27" y="0" width="29.580000000000002" height="8" fill="#3572A5" /><rect x="395.84999999999997" y="0" width="25.229999999999997" height="8" fill="#663399" /><rect x="421.08" y="0" width="12.179999999999998" height="8" fill="#4F5D95" />
+      <rect x="0" y="0" width="184.44" height="8" fill="#f1e05a" /><rect x="184.44" y="0" width="141.375" height="8" fill="#3178c6" /><rect x="325.815" y="0" width="40.019999999999996" height="8" fill="#e34c26" /><rect x="365.835" y="0" width="29.580000000000002" height="8" fill="#3572A5" /><rect x="395.41499999999996" y="0" width="25.229999999999997" height="8" fill="#663399" /><rect x="420.645" y="0" width="12.179999999999998" height="8" fill="#4F5D95" />
     </g>
   </g>
 
@@ -33,7 +33,7 @@
         <g transform="translate(0, 0)">
           <circle cx="5" cy="5" r="5" fill="#f1e05a" />
           <text x="20" y="9" class="lang-name">JavaScript</text>
-          <text x="145" y="9" class="lang-pct">42.5%</text>
+          <text x="145" y="9" class="lang-pct">42.4%</text>
         </g>
         <g transform="translate(0, 26)">
           <circle cx="5" cy="5" r="5" fill="#3178c6" />

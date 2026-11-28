@@ -103,7 +103,7 @@
       <rect x="0" y="0" width="248" height="42" rx="10" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
       <text x="14" y="26" font-size="16">🔥</text>
       <text x="42" y="18" class="stat-chip-title">CURRENT STREAK</text>
-      <text x="42" y="34" class="stat-chip-val">35 Days</text>
+      <text x="42" y="34" class="stat-chip-val">36 Days</text>
       <text x="236" y="26" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8b949e">Max: 44d</text>
     </g>
 
@@ -112,7 +112,7 @@
       <rect x="0" y="0" width="248" height="42" rx="10" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
       <text x="14" y="26" font-size="16">⚡</text>
       <text x="42" y="18" class="stat-chip-title">TOTAL COMMITS</text>
-      <text x="42" y="34" class="stat-chip-val">1,423</text>
+      <text x="42" y="34" class="stat-chip-val">1,424</text>
       <text x="236" y="26" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="10" fill="#10b981">Rank: S+</text>
     </g>
 
@@ -121,7 +121,7 @@
       <rect x="0" y="0" width="248" height="42" rx="10" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
       <text x="14" y="26" font-size="16">💎</text>
       <text x="42" y="18" class="stat-chip-title">ESTIMATED ASSET EQUITY</text>
-      <text x="42" y="34" class="stat-chip-val" fill="#10b981">$66,400</text>
+      <text x="42" y="34" class="stat-chip-val" fill="#10b981">$66,600</text>
       <text x="236" y="26" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="10" fill="#58a6ff">14 ⭐</text>
     </g>
   </g>

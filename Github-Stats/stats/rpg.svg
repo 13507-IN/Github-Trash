@@ -32,8 +32,8 @@
     <!-- XP Bar -->
     <g transform="translate(0, 42)">
       <rect x="0" y="0" width="445" height="5" rx="2.5" fill="#21262d" />
-      <rect x="0" y="0" width="289.25" height="5" rx="2.5" fill="#58a6ff" />
-      <text x="445" y="-5" class="xp-text">XP 65%</text>
+      <rect x="0" y="0" width="302.6" height="5" rx="2.5" fill="#58a6ff" />
+      <text x="445" y="-5" class="xp-text">XP 68%</text>
     </g>
   </g>
 
